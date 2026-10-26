@@ -22,7 +22,7 @@ Unter **Updates** kannst du auch manuell prüfen und die automatische Suche auss
 
 ## Startanimation
 
-Ab Version 1.6.1 erscheint beim Start das goldene D auf transparentem Hintergrund, begleitet von Goldnebel, feinen Funken und einem schimmernden Schriftzug. Die Animation läuft während des Ladens in 8-Sekunden-Schleifen. Enter oder Escape überspringt sie, sobald der Viewer bereit ist. Grafiken und die Schriftart Cinzel werden lokal mitgeliefert.
+Ab Version 1.6.1 erscheint beim Start das goldene D auf transparentem Hintergrund, begleitet von Goldnebel, feinen Funken und einem schimmernden Schriftzug. Die Animation läuft während des Ladens in 8-Sekunden-Schleifen. Enter oder Escape überspringt sie, sobald der Viewer bereit ist. Grafiken und die Schriftart Cinzel werden lokal mitgeliefert. Seit Version 1.6.2 ist die gesamte Startanimation um 50 Prozent vergrößert; auf kleinen Bildschirmen passt sie sich an den verfügbaren Arbeitsbereich an.
 
 ## Voraussetzungen
 

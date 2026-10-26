@@ -77,3 +77,13 @@ Unter **Terrain** stehen 22 zusätzliche Böden bereit: Gras/Moos, Waldboden, Er
 Geprüft wurden Platzierung per Mausklick, DDS-Darstellung aller 25 Materialien, Bodenmalen mit Undo/Redo, Speichern und Wiederladen sowie die Installation über Version 1.7.1.
 
 [Installer und Versionshinweise für 1.7.2](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.2)
+
+## Objekte greifen und Map begehen – 1.7.3
+
+Vorhandene Modelle lassen sich in **Ansicht** direkt anklicken. Nach dem Platzieren wird zur Bearbeitung gewechselt. **W** aktiviert Verschieben, **E** Drehen und **R** die gleichmäßige Größenänderung. Griffe und Prozentfeld erzeugen eine eigene native Modellkopie; unterstützte vorhandene MDATR-Kollisionen und Höhenflächen werden mit skaliert. Die Kopie wird mit der Map gespeichert. Originale bleiben erhalten. Nicht unterstützte Formate werden mit einer Fehlermeldung abgewiesen.
+
+**Doppelklick oder F** fokussiert das Modell. **Begehen** öffnet eine bodennahe Ansicht mit 1,80 m Augenhöhe: WASD gehen, Umschalt schneller, rechte Maustaste zum Umsehen, Escape zurück. Größere Maps beginnen in einer näheren Bearbeitungsansicht. Die Übersicht bleibt über das Rahmensymbol erreichbar. Die Vorschau nutzt die Kartenmaße, simuliert jedoch keine Objektkollisionen und nicht die vollständige Spielbeleuchtung.
+
+Geprüft wurden echtes Anklicken und Ziehen aller drei Grifftypen, native Skalierung, Undo/Redo, Speichern und Wiederladen mit identischen Abmessungen sowie das Update von 1.7.2 auf 1.7.3.
+
+[Installer und Versionshinweise für 1.7.3](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.3)

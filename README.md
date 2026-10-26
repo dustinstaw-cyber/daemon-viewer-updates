@@ -2,7 +2,7 @@
 
 # Daemon Viewer
 
-**by Daemon · Windows · Grau-Gold-Werkstatt**
+**by Daemon · Windows · Anthrazit-Gold-Werkstatt**
 
 Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt.
 
@@ -97,3 +97,13 @@ Im Reiter **Objekte** die rechte Maustaste gedrückt halten und einen Rahmen auf
 Geprüft wurden echte Mausbedienung, beide Ziehrichtungen, Auswahl über die Liste, Löschen/Undo, Kartenwechsel, kleine Fenster und die Installation über Version 1.7.3.
 
 [Installer und Versionshinweise für 1.7.4](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.4)
+
+## Anthrazit und Gold – 1.7.5
+
+Die Oberfläche orientiert sich an der freigegebenen Referenz: dunkle Anthrazitflächen mit dezenter Metalltextur, kräftigere goldene Kanten und Auswahlflächen sowie ein klassischer Daemon-Viewer-Schriftzug mit gerahmtem D. Die Studio-Vorschau verwendet einen neutralen Anthrazitverlauf.
+
+In der Karten-Werkstatt stehen **Terrain und Objekte nebeneinander**. Formen, Wasser und Laufattribute sind Werkzeugmenüs; Texturen, Objekte und Ansicht bleiben direkt erreichbar. Die Pinselwerte befinden sich rechts im Terrainbereich. Die Materialablage bleibt unter der Kartenansicht.
+
+Geprüft wurden die Werkzeugmenüs, Pinselposition, Mindestfenster 1080 × 720, Bereichsauswahl, Verschieben/Drehen/Skalieren per Maus, Begehen und die Installation von 1.7.4 auf 1.7.5. Das Designupdate fügt keine neuen Landschaftsinhalte hinzu.
+
+[Installer und Versionshinweise für 1.7.5](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.5)

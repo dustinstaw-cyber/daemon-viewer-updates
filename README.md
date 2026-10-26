@@ -41,3 +41,9 @@ Version 1.6.3 verstärkt die Goldakzente an Rahmen, Schaltflächen, Symbolen und
 ## Manuelle Wiedergabe
 
 Ab Version 1.6.4 startet die Asset-Vorschau pausiert bei 0,00 Sekunden, auch nach einem Dateiwechsel. Wiedergabe beginnt erst durch Klick auf „Abspielen“ oder Betätigung der Leertaste. Die goldene Oberfläche und die transparente Startanimation bleiben erhalten.
+
+## Karten-Objektbibliothek
+
+Ab Version 1.6.8 gibt es unter **Karten → Objektbibliothek** einen eigenen Katalog für Mapping-Modelle. Er bietet sieben Hauptkategorien, Untergruppen, Suche, natürliche Sortierung, Vorschaubilder und eine interaktive 3D-Vorschau. ZIP-Pakete werden dort lokal über **Modellpaket hinzufügen** importiert und beim nächsten Start wiederhergestellt. Modellpfade lassen sich kopieren und die Paketdateien im Explorer öffnen. Die importierten Kartenmodelle werden nicht der Asset-Galerie hinzugefügt.
+
+Das Alturi-HD-Paket wurde mit 226 Modellen in 16 Untergruppen geprüft; alle Modell- und Texturreferenzen sind auflösbar. Der Installer enthält keine Clientdateien. Diese Bibliothek sortiert und zeigt Kartenmodelle; das Platzieren neuer 3D-Objekte auf Karten ist damit noch nicht implementiert.

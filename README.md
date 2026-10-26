@@ -33,3 +33,7 @@ Windows 10 ab Build 17763 oder Windows 11, 64 Bit. Clientdateien und Maps sind n
 GR2-Modelle werden in statischer Restpose angezeigt. Die Effektvorschau bildet nicht die vollständige Spiel-Engine nach. Gebäude, Bäume und Effekte auf Karten erscheinen als Positionsmarkierungen.
 
 Dieses öffentliche Repository dient ausschließlich der Verteilung von Installern und Versionshinweisen. Das Projekt-Repository bleibt privat.
+
+## Goldgestaltung
+
+Version 1.6.3 verstärkt die Goldakzente an Rahmen, Schaltflächen, Symbolen und Auswahlzuständen. Eine dunkle Titelleiste mit goldenen Windows-Bedienelementen ergänzt das Schwarz-Gold-Design. Die große transparente Startanimation bleibt erhalten.

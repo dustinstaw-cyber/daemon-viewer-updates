@@ -87,3 +87,13 @@ Vorhandene Modelle lassen sich in **Ansicht** direkt anklicken. Nach dem Platzie
 Geprüft wurden echtes Anklicken und Ziehen aller drei Grifftypen, native Skalierung, Undo/Redo, Speichern und Wiederladen mit identischen Abmessungen sowie das Update von 1.7.2 auf 1.7.3.
 
 [Installer und Versionshinweise für 1.7.3](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.3)
+
+## Bereichsauswahl für Objekte – 1.7.4
+
+Im Reiter **Objekte** die rechte Maustaste gedrückt halten und einen Rahmen aufziehen. Links erscheint **Objekte im Bereich** mit Namen, Nummern und Positionen der Treffer. Ein Klick auf einen Listeneintrag wählt dieses Objekt mit Verschiebegriffen aus. W verschiebt, E dreht, R ändert die Größe, F fokussiert.
+
+**Alle Objekte** zeigt sämtliche Kartenobjekte in der Liste; **Liste leeren** entfernt die Trefferliste. Escape bricht einen laufenden Rahmen ab. **Alt + Rechtsziehen** verschiebt im Objektmodus die Kamera. Die Bereichsauswahl lässt sich rechts in der Werkstatt ausschalten. Im Terrain- und Begehen-Modus bleibt die bisherige Maussteuerung verfügbar. Die Liste dient zur Auswahl einzelner Objekte, nicht zum gleichzeitigen Verschieben aller Treffer.
+
+Geprüft wurden echte Mausbedienung, beide Ziehrichtungen, Auswahl über die Liste, Löschen/Undo, Kartenwechsel, kleine Fenster und die Installation über Version 1.7.3.
+
+[Installer und Versionshinweise für 1.7.4](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.4)

@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/daemon-logo.png" width="144" alt="Daemon Viewer"></p>
+
 # Daemon Viewer
 
 **by Daemon · Windows · Gallery Gold**

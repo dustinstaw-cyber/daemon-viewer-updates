@@ -37,3 +37,7 @@ Dieses öffentliche Repository dient ausschließlich der Verteilung von Installe
 ## Goldgestaltung
 
 Version 1.6.3 verstärkt die Goldakzente an Rahmen, Schaltflächen, Symbolen und Auswahlzuständen. Eine dunkle Titelleiste mit goldenen Windows-Bedienelementen ergänzt das Schwarz-Gold-Design. Die große transparente Startanimation bleibt erhalten.
+
+## Manuelle Wiedergabe
+
+Ab Version 1.6.4 startet die Asset-Vorschau pausiert bei 0,00 Sekunden, auch nach einem Dateiwechsel. Wiedergabe beginnt erst durch Klick auf „Abspielen“ oder Betätigung der Leertaste. Die goldene Oberfläche und die transparente Startanimation bleiben erhalten.

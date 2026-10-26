@@ -2,9 +2,9 @@
 
 # Daemon Viewer
 
-**by Daemon · Windows · Gallery Gold**
+**by Daemon · Windows · Grau-Gold-Werkstatt**
 
-Viewer für Modelle, Texturen, Effekte und Metin2-Karten im Schwarz-Gold-Design.
+Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt.
 
 [**Aktuellen Windows-Installer herunterladen**](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/latest)
 
@@ -30,7 +30,7 @@ Windows 10 ab Build 17763 oder Windows 11, 64 Bit. Clientdateien und Maps sind n
 
 ## Darstellung
 
-GR2-Modelle werden in statischer Restpose angezeigt. Die Effektvorschau bildet nicht die vollständige Spiel-Engine nach. Gebäude, Bäume und Effekte auf Karten erscheinen als Positionsmarkierungen.
+GR2-Modelle werden in statischer Restpose angezeigt. Die Effektvorschau bildet nicht die vollständige Spiel-Engine nach. Seit Version 1.7.0 werden Kartenobjekte mit aufgelösten GR2-Properties als Modelle dargestellt. Nicht aufgelöste Properties und nicht unterstützte Modelltypen bleiben Positionsmarkierungen.
 
 Dieses öffentliche Repository dient ausschließlich der Verteilung von Installern und Versionshinweisen. Das Projekt-Repository bleibt privat.
 
@@ -46,4 +46,14 @@ Ab Version 1.6.4 startet die Asset-Vorschau pausiert bei 0,00 Sekunden, auch nac
 
 Ab Version 1.6.8 gibt es unter **Karten → Objektbibliothek** einen eigenen Katalog für Mapping-Modelle. Er bietet sieben Hauptkategorien, Untergruppen, Suche, natürliche Sortierung, Vorschaubilder und eine interaktive 3D-Vorschau. ZIP-Pakete werden dort lokal über **Modellpaket hinzufügen** importiert und beim nächsten Start wiederhergestellt. Modellpfade lassen sich kopieren und die Paketdateien im Explorer öffnen. Die importierten Kartenmodelle werden nicht der Asset-Galerie hinzugefügt.
 
-Das Alturi-HD-Paket wurde mit 226 Modellen in 16 Untergruppen geprüft; alle Modell- und Texturreferenzen sind auflösbar. Der Installer enthält keine Clientdateien. Diese Bibliothek sortiert und zeigt Kartenmodelle; das Platzieren neuer 3D-Objekte auf Karten ist damit noch nicht implementiert.
+Das Alturi-HD-Paket wurde mit 226 Modellen in 16 Untergruppen geprüft; alle Modell- und Texturreferenzen sind auflösbar. Der Installer enthält keine Clientdateien. Seit Version 1.7.0 ist die Bibliothek direkt in die Karten-Werkstatt integriert; geeignete GR2-Modelle können auf der Karte platziert und bearbeitet werden.
+
+## Karten-Werkstatt 1.7.0
+
+Die neue Grau-Gold-Oberfläche bietet Terrain und Objekte als Werkstatt-Reiter sowie eine Material-/Objektablage unter der Kartenansicht. GR2-Objekte können platziert, ausgewählt, verschoben, gedreht, dupliziert und gelöscht werden – mit 3D-Transformationswerkzeugen, Zahlenfeldern, Raster, Zufallsdrehung und Undo/Redo. W verschiebt, E dreht, F fokussiert und Entf löscht das ausgewählte Objekt.
+
+Gespeicherte Kartenkopien enthalten neu platzierte Modelle, Texturen, Properties und vorhandene zugehörige MDATR-Dateien. Originaldateien bleiben erhalten. Es wird kein externer World Editor eingebunden.
+
+**Dieses Update ist noch kein vollständiger World-Editor-Ersatz.** SpeedTree, vollständige Umgebungs-, Effekt- und Skripteditoren, Kollisionsbearbeitung sowie Schatten-, Minimap- und server_attr-Erzeugung stehen noch aus. Vorhandene MDATR-Dateien werden kopiert; neue Kollisionen werden nicht berechnet.
+
+[Versionshinweise und Installer für 1.7.0](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.0)

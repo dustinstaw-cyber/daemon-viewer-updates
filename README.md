@@ -26,7 +26,7 @@ Ab Version 1.6.1 erscheint beim Start das goldene D auf transparentem Hintergrun
 
 ## Voraussetzungen
 
-Windows 10 ab Build 17763 oder Windows 11, 64 Bit. Clientdateien und Maps sind nicht enthalten; sie werden lokal ausgewählt. Für die automatische Update-Suche und Downloads ist eine Internetverbindung erforderlich.
+Windows 10 ab Build 17763 oder Windows 11, 64 Bit. Eigene Clientdateien und Maps werden lokal ausgewählt. Die unten beschriebenen Kartenmaterialien werden mitgeliefert. Für die automatische Update-Suche und Downloads ist eine Internetverbindung erforderlich.
 
 ## Darstellung
 
@@ -67,3 +67,13 @@ Unter **Terrain** sind jetzt neun eigene Standardböden direkt verfügbar: Grasw
 Die Standardböden sind eigens erzeugte Materialien; private Client-, Modellpaket- und Map-Dateien werden weiterhin nicht mitgeliefert.
 
 [Installer und Versionshinweise für 1.7.1](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.1)
+
+## Kartenmaterialien 1.7.2
+
+Unter **Karten → Objekte → Schiffswracks** ist ein rekonstruiertes Schiffswrack mit Modelltextur und vorhandener MDATR-Datei enthalten. Modell wählen und auf das Gelände klicken; gespeicherte Kartenkopien übernehmen die benötigten Ressourcen.
+
+Unter **Terrain** stehen 22 zusätzliche Böden bereit: Gras/Moos, Waldboden, Erde/Schlamm, Sand, Kies, Stein/Pflaster, Schnee/Eis und Lava. Drei weitere statische Wasseroberflächen findest du unter **Terrain → Texturbibliothek öffnen → Wasser**. Die Pakete sind im Installer enthalten und müssen nicht separat importiert werden.
+
+Geprüft wurden Platzierung per Mausklick, DDS-Darstellung aller 25 Materialien, Bodenmalen mit Undo/Redo, Speichern und Wiederladen sowie die Installation über Version 1.7.1.
+
+[Installer und Versionshinweise für 1.7.2](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.2)

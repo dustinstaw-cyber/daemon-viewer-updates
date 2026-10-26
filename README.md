@@ -19,6 +19,11 @@ Unter **Updates** kannst du auch manuell prüfen und die automatische Suche auss
 
 **Version 1.5 und ältere Fassungen benötigen einmalig den neuen Installer.** Nutzer brauchen für Downloads und Updates kein GitHub-Konto.
 
+
+## Startanimation
+
+Ab Version 1.6.1 erscheint beim Start das goldene D auf transparentem Hintergrund, begleitet von Goldnebel, feinen Funken und einem schimmernden Schriftzug. Die Animation läuft während des Ladens in 8-Sekunden-Schleifen. Enter oder Escape überspringt sie, sobald der Viewer bereit ist. Grafiken und die Schriftart Cinzel werden lokal mitgeliefert.
+
 ## Voraussetzungen
 
 Windows 10 ab Build 17763 oder Windows 11, 64 Bit. Clientdateien und Maps sind nicht enthalten; sie werden lokal ausgewählt. Für die automatische Update-Suche und Downloads ist eine Internetverbindung erforderlich.

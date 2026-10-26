@@ -57,3 +57,13 @@ Gespeicherte Kartenkopien enthalten neu platzierte Modelle, Texturen, Properties
 **Dieses Update ist noch kein vollständiger World-Editor-Ersatz.** SpeedTree, vollständige Umgebungs-, Effekt- und Skripteditoren, Kollisionsbearbeitung sowie Schatten-, Minimap- und server_attr-Erzeugung stehen noch aus. Vorhandene MDATR-Dateien werden kopiert; neue Kollisionen werden nicht berechnet.
 
 [Versionshinweise und Installer für 1.7.0](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.0)
+
+## Korrekturupdate 1.7.1: Platzieren und Böden
+
+Eine Modellkarte auswählen aktiviert direkt den Platzierungsmodus. Anschließend auf die Map klicken oder eine Modellkarte auf das Gelände ziehen. F fokussiert ein platziertes Objekt; Escape beendet die Platzierung. Lade- und Fehlerhinweise stehen über der Objektablage.
+
+Unter **Terrain** sind jetzt neun eigene Standardböden direkt verfügbar: Graswiese, trockenes Gras, Moos, Erde, Waldboden, Sand, Kies, Fels und Pflaster. Neue Karten ohne eigenes TextureSet beginnen mit einer Graswiese. Bestehende Karten behalten ihre Materialien. Verwendete Böden werden in Kartenkopien gespeichert. Eigene Texturordner und ZIP-Texturpakete können zusätzlich importiert werden.
+
+Die Standardböden sind eigens erzeugte Materialien; private Client-, Modellpaket- und Map-Dateien werden weiterhin nicht mitgeliefert.
+
+[Installer und Versionshinweise für 1.7.1](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.1)

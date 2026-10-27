@@ -115,3 +115,11 @@ Das ursprüngliche goldene D-Emblem ist wieder in der Kopfzeile. Der Schriftzug 
 Geprüft wurden 74 Tests, die Update-Bedienung einschließlich Schutz ungespeicherter Änderungen und ein Installationswechsel von 1.7.5 auf 1.7.6 mit automatischem Neustart ohne sichtbares Setupfenster. Alle 1.446 installierten Programmdateien wurden mit dem gebauten Paket verglichen. Der unsichtbare Ablauf gilt für Aktualisierungen, die aus 1.7.6 oder neuer gestartet werden.
 
 [Installer und Versionshinweise für 1.7.6](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.6)
+
+## Neues Update-Fenster – 1.7.7
+
+Das Update-Fenster hat einen eigenen Kopfbereich mit dem Schließen-X oben rechts. Ein einzelner durchgehender Goldbalken zeigt den tatsächlichen Download-Prozentwert; eine zweite Schimmerleiste entfällt. Nach vollständigem und geprüftem Download leuchten Leiste und Prozentzahl golden auf, begleitet von einem kurzen Lichtschein über dem Fenster. Suche und Neustart-Vorbereitung verwenden eine laufende Animation ohne erfundene Prozentwerte. Reduzierte Bewegung wird berücksichtigt.
+
+Die Aktualisierung wird weiterhin über **Aktualisieren & neu starten** bestätigt; ungespeicherte Karten blockieren den Neustart. Der Viewer schließt sich für den Dateiaustausch kurz und öffnet sich automatisch wieder. Der Goldabschluss kennzeichnet den geprüften Download, nicht eine bereits abgeschlossene Installation. Das neue Fenster ist nach dem Wechsel auf 1.7.7 verfügbar.
+
+[Installer und Versionshinweise für 1.7.7](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.7)

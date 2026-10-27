@@ -13,9 +13,9 @@ Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt
 1. Lade den Installer aus dem neuesten Release herunter und installiere den Viewer.
 2. Wähle beim ersten Start deinen eigenen entpackten Client- oder Map-Ordner.
 3. Ab Version 1.6 sucht das Programm beim Start und alle sechs Stunden automatisch nach stabilen Updates und lädt sie herunter.
-4. Über **Updates → Installieren & neu starten** bestätigst du die Installation. Speichere vorher deine Kartenänderungen.
+4. Über **Updates → Aktualisieren & neu starten** startest du die Aktualisierung. Speichere vorher deine Kartenänderungen.
 
-Unter **Updates** kannst du auch manuell prüfen und die automatische Suche ausschalten. Updates werden vor der Installation mit der von GitHub gelieferten SHA-256-Prüfsumme verglichen. Einstellungen und eigene Dateien bleiben erhalten.
+Unter **Updates** kannst du auch manuell prüfen und die automatische Suche ausschalten. Updates werden vor der Installation mit der von GitHub gelieferten SHA-256-Prüfsumme verglichen. Einstellungen und eigene Dateien bleiben erhalten. Ab Version 1.7.6 läuft der geprüfte Installer ohne eigenes Setupfenster; zum Austausch der EXE schließt sich der Viewer kurz und startet automatisch neu. Beim Wechsel aus einer älteren Fassung auf 1.7.6 kann deren bisheriges Setupfenster noch einmal erscheinen.
 
 **Version 1.5 und ältere Fassungen benötigen einmalig den neuen Installer.** Nutzer brauchen für Downloads und Updates kein GitHub-Konto.
 
@@ -107,3 +107,11 @@ In der Karten-Werkstatt stehen **Terrain und Objekte nebeneinander**. Formen, Wa
 Geprüft wurden die Werkzeugmenüs, Pinselposition, Mindestfenster 1080 × 720, Bereichsauswahl, Verschieben/Drehen/Skalieren per Maus, Begehen und die Installation von 1.7.4 auf 1.7.5. Das Designupdate fügt keine neuen Landschaftsinhalte hinzu.
 
 [Installer und Versionshinweise für 1.7.5](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.5)
+
+## Daemon-Emblem und Hintergrundupdates – 1.7.6
+
+Das ursprüngliche goldene D-Emblem ist wieder in der Kopfzeile. Der Schriftzug verwendet feinere Typografie mit einem hellen Goldverlauf. Updates werden direkt im Viewer bestätigt; eine weitere Windows-Abfrage entfällt. Ungespeicherte Karten blockieren den Neustart weiterhin. Nach dem Neustart erkennt der Viewer den Erfolg anhand seiner tatsächlich gestarteten Version.
+
+Geprüft wurden 74 Tests, die Update-Bedienung einschließlich Schutz ungespeicherter Änderungen und ein Installationswechsel von 1.7.5 auf 1.7.6 mit automatischem Neustart ohne sichtbares Setupfenster. Alle 1.446 installierten Programmdateien wurden mit dem gebauten Paket verglichen. Der unsichtbare Ablauf gilt für Aktualisierungen, die aus 1.7.6 oder neuer gestartet werden.
+
+[Installer und Versionshinweise für 1.7.6](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.6)

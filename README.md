@@ -123,3 +123,11 @@ Das Update-Fenster hat einen eigenen Kopfbereich mit dem Schließen-X oben recht
 Die Aktualisierung wird weiterhin über **Aktualisieren & neu starten** bestätigt; ungespeicherte Karten blockieren den Neustart. Der Viewer schließt sich für den Dateiaustausch kurz und öffnet sich automatisch wieder. Der Goldabschluss kennzeichnet den geprüften Download, nicht eine bereits abgeschlossene Installation. Das neue Fenster ist nach dem Wechsel auf 1.7.7 verfügbar.
 
 [Installer und Versionshinweise für 1.7.7](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.7)
+
+## Goldanimation in der Kopfzeile – 1.7.8
+
+Das D-Emblem und der Schriftzug **Daemon Viewer** tragen jetzt die freigegebene Goldanimation mit Stärke **1,5**: sanftes Leuchten am Logo und ein zeitversetzter Lichtschimmer über Logo und Schrift. Die Animation wiederholt sich dauerhaft in Sieben-Sekunden-Schleifen in beiden Arbeitsbereichen. Aufbau und lokale Schriftart bleiben erhalten. Bei aktivierter Einstellung für reduzierte Bewegung wird die Kopfzeile statisch dargestellt.
+
+Das Update-Fenster mit einer durchgehenden Goldleiste und Goldabschluss aus 1.7.7 bleibt enthalten. Die Animation ist nach dem Wechsel auf 1.7.8 verfügbar.
+
+[Installer und Versionshinweise für 1.7.8](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.8)

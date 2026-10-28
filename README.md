@@ -131,3 +131,13 @@ Das D-Emblem und der Schriftzug **Daemon Viewer** tragen jetzt die freigegebene 
 Das Update-Fenster mit einer durchgehenden Goldleiste und Goldabschluss aus 1.7.7 bleibt enthalten. Die Animation ist nach dem Wechsel auf 1.7.8 verfügbar.
 
 [Installer und Versionshinweise für 1.7.8](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.8)
+
+## Nachtgold, Daemon-Menü und Lichtblenden – 1.7.9
+
+Die freigegebene Oberfläche kombiniert **Nachtgold** mit dem animierten **Basalt-D** im Hintergrund der leeren Asset-Vorschau. Das Logo und die Goldanimation oben links bleiben erhalten. Ein Klick auf das D öffnet das goldene Kontrollmenü mit **Hilfe, Beenden, Updates, Versionen und Lizenz**.
+
+Hilfe enthält Einstieg und Tastenkürzel. Updates nutzt den echten Update-Kanal und führt zum bestehenden Update-Fenster. Versionen zeigt den lokalen Verlauf und öffnet die offiziellen Versionshinweise. Die Lizenzansicht enthält die mitgelieferten Texte von Electron, Three.js und Cinzel; eigene Produktbedingungen sind noch nicht festgelegt.
+
+Die Lichtblende begleitet das Öffnen und Schließen des Menüs. Nach der Startanimation öffnet sich auch das Hauptfenster mit Lichtblende; beim manuellen Beenden läuft sie umgekehrt. Das native Fenster-X und Alt+F4 führen direkt zum Schließen, ohne das Daemon-Menü zu öffnen. Ungespeicherte Karten erhalten eine **separate Speicherabfrage**. Abgebrochenes oder fehlgeschlagenes Speichern beendet das Programm nicht. Reduzierte Bewegung wird berücksichtigt.
+
+[Installer und Versionshinweise für 1.7.9](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.9)

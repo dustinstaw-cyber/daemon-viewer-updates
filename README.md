@@ -205,3 +205,19 @@ Oben gibt es jetzt **einen Button „Shop & Warenkorb“**. Innerhalb desselben 
 Geprüft: **97 automatisierte Tests**, native Mausrad- und Rechtsklick-Eingaben, leere Map trotz Materialwahl, beide Bodentexturen nach Prozessneustart und der gemeinsame Shop. Das Hintergrundupdate von **1.7.13 auf 1.7.14** installierte ohne sichtbares Setupfenster und startete automatisch neu. Alle **2.477 Programmdateien** wurden per SHA-256 mit dem Paket verglichen.
 
 [Installer und Versionshinweise für 1.7.14](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.14)
+
+## Kartenwerkzeuge, Sicherungen und Öffnen mit – 1.7.15
+
+Unter **Karten → Objekte** gibt es echte Mehrfachbearbeitung mit Verschieben und Drehung um den Gruppenmittelpunkt, Bodenausrichtung mit Höhenversatz, Objekt-Reihen mit Anzahl/Abstand/Richtung und die Ebenen **Standard, Vegetation und Bauwerke**. Ebenen können zugewiesen, ausgeblendet und gesperrt werden. Ihre Einstellungen werden in **DaemonEditor.json** mit der Karte gespeichert. Änderungen unterstützen Rückgängig/Wiederholen. Eine sichtbare Leiste auf der Karte bietet Drehringe, Winkelschritte und den Drehmodus; dieser bleibt beim erneuten Auswählen erhalten.
+
+**Sicherungsstände** unter Terrain speichern vollständige Kartenkopien einschließlich vorhandener Modelle und Texturen. Bei Änderungen wird nach 60 Sekunden automatisch gesichert; eine manuelle Sicherung ist ebenfalls möglich. Bis zu fünf Stände pro Karte bleiben erhalten, wobei eine gerade geöffnete ältere Sicherung zusätzlich geschützt wird. Wiederherstellen öffnet eine eigene Kartenkopie. Die Sicherungen liegen im Benutzerprofil von Daemon Viewer.
+
+Ein Rechtsklick auf eine Map bietet den roten Eintrag **Map löschen…**. Nach einer Bestätigung mit Namen und Pfad wird nur ihr Map-Ordner in den Windows-Papierkorb verschoben. Benachbarte Ressourcen bleiben bestehen. **Leeren** oben in der Asset-Bibliothek entfernt die geladenen Quellen, ohne Originaldateien zu löschen.
+
+Nach Installation erscheint Daemon Viewer in **Öffnen mit** für GR2, MSE, MDE, DDS, TGA, PNG, JPG, JPEG und BMP. Die angeklickte Datei wird geladen; weitere Dateianfragen können an das laufende Programm übergeben werden. Bestehende Standard-Apps werden nicht ersetzt. Ob die Auswahl einmalig oder dauerhaft gilt, entscheidet der Nutzer im Windows-Dialog.
+
+Im Shop steht die tatsächlich aktive Edition links am D-Logo in einer goldenen Plakette. Das D erscheint auch im runden Erfolgsbereich. Eine goldene Mausspur blendet nach Bewegung wieder aus und berücksichtigt reduzierte Bewegung. **Zahlungen und Testaktivierung bleiben Demo und ändern keine Lizenz.** Ohne gültige Aktivierung bleibt Free aktiv; Kartenbearbeitung und Sicherungen benötigen eine Freischaltung.
+
+Geprüft: **104 automatisierte Tests**, native Mehrfachwerkzeuge und Ebenen einschließlich Undo und Persistenz, vollständige Sicherung/Wiederherstellung, der echte 60-Sekunden-Timer, zwei einzelne Dateien, Bibliothek leeren, Shop und Hintergrundupdate von **1.7.14 auf 1.7.15**. Die Dateizuordnung wurde in einem isolierten Registry-Bereich geprüft. Alle **2.490 installierten Programmdateien** stimmen per SHA-256 mit dem Paket überein.
+
+[Installer und Versionshinweise für 1.7.15](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.15)

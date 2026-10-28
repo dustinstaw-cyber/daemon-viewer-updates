@@ -141,3 +141,13 @@ Hilfe enthält Einstieg und Tastenkürzel. Updates nutzt den echten Update-Kanal
 Die Lichtblende begleitet das Öffnen und Schließen des Menüs. Nach der Startanimation öffnet sich auch das Hauptfenster mit Lichtblende; beim manuellen Beenden läuft sie umgekehrt. Das native Fenster-X und Alt+F4 führen direkt zum Schließen, ohne das Daemon-Menü zu öffnen. Ungespeicherte Karten erhalten eine **separate Speicherabfrage**. Abgebrochenes oder fehlgeschlagenes Speichern beendet das Programm nicht. Reduzierte Bewegung wird berücksichtigt.
 
 [Installer und Versionshinweise für 1.7.9](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.9)
+
+## Asset-Import per Drag-and-drop – 1.7.10
+
+Ordner sowie **ZIP-, RAR- und 7z-Archive** können direkt in die linke Asset-Bibliothek gezogen werden. Mehrere Quellen werden ergänzt; vorhandene Assets bleiben erhalten. Archive werden lokal in einen verwalteten Importordner entpackt. Originaldateien bleiben unverändert. Identische Archive und wiederholt hinzugefügte Ordner werden nicht doppelt aufgenommen; ausdrücklich ausgewählte Quellen werden beim nächsten Start wiederhergestellt. Die benötigte 7-Zip-Komponente einschließlich Lizenzhinweisen und Originalquellen wird mitgeliefert.
+
+Das Drop-Ziel wird hervorgehoben, Statusmeldungen begleiten den Import. Unterstützt werden bis zu 20 Quellen und ZIP/RAR/7z bis 8 GB, mit maximal 100.000 Einträgen, 512 MB pro Datei und 16 GB entpacktem Inhalt. Passwortgeschützte oder mehrteilige Archive bitte vorher selbst entpacken. EPK/EIX sind keine unterstützten Asset-Archive.
+
+Die separate Titelleiste oben entfällt. **Minimieren, Maximieren/Wiederherstellen und Schließen** sitzen direkt in der Hauptkopfzeile. Das X verwendet weiterhin die Lichtblende und öffnet kein Menü. Geprüft sind 84 Tests, echte Datei-Drops, Wiederherstellung nach Neustart, Umlaute/Leerzeichen, Kartenbedienung und der Update-Wechsel von 1.7.9 auf 1.7.10.
+
+[Installer und Versionshinweise für 1.7.10](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.10)

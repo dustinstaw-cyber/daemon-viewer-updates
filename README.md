@@ -13,6 +13,19 @@ Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt
 
 
 
+
+## Neu in 1.7.19: Kostüm-Werkstatt und abgerundete Bedienelemente
+
+**Assets → Kostüm-Werkstatt** zeigt die geladenen Assets mit Suche und Kategorien und verwendet echte GR2-Modelle und Materialtexturen. Umfärben, Bereichsmarkierung, Kopierstempel mit Alt-Klick-Quelle, Originalpinsel, Undo/Redo, Originalvergleich, UV-Netz und Alpha-Vorschau sind angeschlossen. Retusche erfolgt manuell; eine automatische KI-Rekonstruktion wird nicht behauptet.
+
+In der Vollversion werden Varianten als neue Ordnerkopie mit unverändertem Modell und den Texturen gespeichert. DDS wird als unkomprimiertes RGBA8 exportiert; die übrigen unterstützten Bildtypen behalten ihren Dateityp. Originale bleiben erhalten. Gespeicherte Varianten lassen sich wieder importieren. Free behält die vorhandenen Asset- und Exportgrenzen.
+
+Buttons und Auswahlfelder haben jetzt einheitliche 8-Pixel-Ecken, einschließlich kleiner Symbolbuttons. Die gebaute Fassung wurde über 20 Bereiche geprüft: Assets, Karten und deren Bibliotheken, Extractor, Shop, Programmmenüs, Updates, Tickets, Adminbereich und Werkstatt. Neue Texturadressen verhindern veraltete Bilder beim Wechsel zwischen gleich benannten Dateien aus unterschiedlichen Quellen.
+
+Geprüft mit 125 automatisierten Tests sowie nativen Prüfungen für Bearbeitung, Export und Wiederimport, Free-Grenzen, privaten Adminzugang und das Upgrade von 1.7.18. Der Ticketsupport arbeitet weiterhin lokal.
+
+[Installer und Versionshinweise 1.7.19](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.19)
+
 ## Neu in 1.7.18: Nachtgold für Adminbereich und Ticket-Center
 
 Die gewählten Ansichten sind jetzt direkt eingebaut: D-Logo, lokale Cinzel-Schrift, Anthrazittextur, goldene Navigation und echte Ticketzahlen mit Profil und Edition. Das Ticket-Center verbindet Posteingang und Statusfilter mit dem Formular für neue Anliegen sowie dem vorhandenen Ticketgespräch. Dezenter Goldschimmer, ein Lichtlauf und kurzes Partikelfeedback ergänzen die Oberfläche; reduzierte Animationen werden berücksichtigt.

@@ -12,6 +12,15 @@ Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt
 
 
 
+
+## Neu in 1.7.18: Nachtgold für Adminbereich und Ticket-Center
+
+Die gewählten Ansichten sind jetzt direkt eingebaut: D-Logo, lokale Cinzel-Schrift, Anthrazittextur, goldene Navigation und echte Ticketzahlen mit Profil und Edition. Das Ticket-Center verbindet Posteingang und Statusfilter mit dem Formular für neue Anliegen sowie dem vorhandenen Ticketgespräch. Dezenter Goldschimmer, ein Lichtlauf und kurzes Partikelfeedback ergänzen die Oberfläche; reduzierte Animationen werden berücksichtigt.
+
+Der Adminbereich bleibt nur auf privat eingerichteten Rechnern sichtbar und verlangt weiterhin die echte Anmeldung. Der öffentliche Installer enthält keine Admin-Zugangsdaten oder Beispieltickets. Vorhandene Profile und Tickets bleiben gespeichert. **Der Ticketsupport arbeitet weiterhin lokal; eine zentrale Online-Anbindung ist noch nicht eingerichtet.**
+
+[Installer und Versionshinweise 1.7.18](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.18)
+
 ## Neu in 1.7.17: lokaler Adminbereich
 
 Der private Adminbereich enthält jetzt echte Anmeldung mit Passwortprüfung, eine Übersicht sowie Tickets, Benutzer, Lizenzen und Einstellungen. Ein Klick auf ein Ticket öffnet den Gesprächsverlauf; Antworten, Status und interne Notizen bleiben gespeichert. Interne Notizen werden nicht über die Benutzeransicht ausgeliefert. Der lokale Ticket-Wartungsmodus blockiert Benutzereingaben. Abmelden, Sitzungsablauf und Passwortwechsel sperren die geschützten Funktionen.

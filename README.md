@@ -151,3 +151,13 @@ Das Drop-Ziel wird hervorgehoben, Statusmeldungen begleiten den Import. Unterst�
 Die separate Titelleiste oben entfällt. **Minimieren, Maximieren/Wiederherstellen und Schließen** sitzen direkt in der Hauptkopfzeile. Das X verwendet weiterhin die Lichtblende und öffnet kein Menü. Geprüft sind 84 Tests, echte Datei-Drops, Wiederherstellung nach Neustart, Umlaute/Leerzeichen, Kartenbedienung und der Update-Wechsel von 1.7.9 auf 1.7.10.
 
 [Installer und Versionshinweise für 1.7.10](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.10)
+
+## Shop und Studio-Goldeffekt – 1.7.11
+
+Der neue **Shop** ist direkt über die Kopfzeile erreichbar und zeigt Free, Explorer, Creator und Studio mit Monats-/Jahrespreisen. Das goldene D steht im Shop-Kopf und auf den Abo-Karten. Das Studio-D trägt einen pulsierenden Goldschein, einen wandernden Lichtreflex und ein Funkeln in Dauerschleife. Reduzierte Bewegung wird berücksichtigt.
+
+**Käufe, Testaktivierung und Lizenzfreischaltung sind noch nicht verfügbar.** PayPal-Geschäftskonto und Lizenzserver müssen erst eingerichtet werden. Die Anzeige für einen einmaligen 7-Tage-Vollversionstest pro Gerät ist vorbereitet. Die Editionsbeschreibungen zeigen den geplanten Umfang; bestehende Viewer-Funktionen bleiben nutzbar. Es wird kein Abonnement angelegt und keine Zahlung ausgelöst.
+
+Geprüft wurden 87 Tests, Shop-Bedienung, Preise, Fenstersteuerung und das Hintergrundupdate von 1.7.10 auf 1.7.11 mit automatischem Neustart. Alle 1.468 installierten Programmdateien wurden per SHA-256 mit dem Paket verglichen.
+
+[Installer und Versionshinweise für 1.7.11](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.11)

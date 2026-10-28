@@ -10,6 +10,18 @@ Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt
 
 **Ab 1.7.12 startet eine frische Installation ohne eigene Lizenz als Free-Version.**
 
+
+## Neu in 1.7.16
+
+- **Fluid Lab:** zusätzliche Wasser-/Lava-Materialregler unter Karten → Werkstatt → Terrain, direkt auf der echten Kartengeometrie. Materialwerte unterstützen Undo/Redo und bleiben über Speichern/Wiederöffnen erhalten. Die Spielclient-Darstellung benötigt eine eigene Anbindung.
+- **Tickets:** eigener Knopf neben Updates, Liste und Gesprächsverlauf bei Klick. Fester lokaler Benutzername und gespeicherte Entwürfe. **Noch kein Supportserver: Nachrichten werden nicht versendet; Adminzugang bleibt gesperrt.** Lizenzpaket, Master-Key und HWID vergeben keine Adminrechte. Zugangsdaten des Prototyps werden nicht ausgeliefert.
+- **Extractor:** Ordner oder ZIP analysieren, Kategorien auswählen und mit Originalpfaden/Prüfmanifest als Ordner oder ZIP exportieren. RAR benötigt WinRAR. Client-Skripte werden nie ausgeführt. Ungeprüfte Binärreferenzen und fehlende Dateien werden ausgewiesen; der strenge Modus blockiert solche Exporte.
+- **Updates minimieren:** Knopf im Update-Dialog; laufender Download bleibt aktiv. Das ursprüngliche Design bleibt erhalten.
+
+Geprüft mit 114 automatisierten Tests, nativer Programmprüfung und Hintergrundupgrade von 1.7.15 auf 1.7.16. Frische Installation bleibt Free.
+
+[Installer und Versionshinweise 1.7.16](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.16)
+
 ## Installation und Updates
 
 1. Lade den Installer aus dem neuesten Release herunter und installiere den Viewer.

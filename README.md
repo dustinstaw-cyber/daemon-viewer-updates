@@ -14,6 +14,17 @@ Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt
 
 
 
+
+## Neu in 1.7.20: SpeedTree, Ashura-Kartenobjekte und schärfere Böden
+
+Originale SpeedTree-Bäume mit Stamm, Ästen und kameragerechten Blattflächen sind im Kartenbereich verfügbar. Zentrale Property-Indizes und Karteneffekte werden geladen; die Testkarte metin2_map_b1 zeigt alle 1.911 Objektplatzierungen.
+
+Ashura-Objekte und ihre Materialien sind unter **Karten → Objekte** einsortiert. 661 Ashura-Böden sowie 25 Regen- und Pfützentexturen stehen unter **Terrain** bereit. Terrainmaterialien nutzen je nach Palette bis zu 2.048 Pixel, anisotrope Filterung und ein dezentes Oberflächenrelief. Die Zoomkorrektur hält die Geschwindigkeit auch nach wiederholtem Heranzoomen aufrecht.
+
+Geprüft mit 132 automatisierten Tests, nativer Kartenprüfung, Baumplatzierung/Skalierung/Export sowie dem Upgrade von 1.7.19. Einzelne im Quellarchiv fehlende Materialien und eine nicht lesbare GR2-Quelldatei sind in den Versionshinweisen ausgewiesen.
+
+[Installer und Versionshinweise 1.7.20](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.20)
+
 ## Neu in 1.7.19: Kostüm-Werkstatt und abgerundete Bedienelemente
 
 **Assets → Kostüm-Werkstatt** zeigt die geladenen Assets mit Suche und Kategorien und verwendet echte GR2-Modelle und Materialtexturen. Umfärben, Bereichsmarkierung, Kopierstempel mit Alt-Klick-Quelle, Originalpinsel, Undo/Redo, Originalvergleich, UV-Netz und Alpha-Vorschau sind angeschlossen. Retusche erfolgt manuell; eine automatische KI-Rekonstruktion wird nicht behauptet.

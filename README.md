@@ -8,6 +8,8 @@ Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt
 
 [**Aktuellen Windows-Installer herunterladen**](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/latest)
 
+**Ab 1.7.12 startet eine frische Installation ohne eigene Lizenz als Free-Version.**
+
 ## Installation und Updates
 
 1. Lade den Installer aus dem neuesten Release herunter und installiere den Viewer.
@@ -161,3 +163,17 @@ Der neue **Shop** ist direkt über die Kopfzeile erreichbar und zeigt Free, Expl
 Geprüft wurden 87 Tests, Shop-Bedienung, Preise, Fenstersteuerung und das Hintergrundupdate von 1.7.10 auf 1.7.11 mit automatischem Neustart. Alle 1.468 installierten Programmdateien wurden per SHA-256 mit dem Paket verglichen.
 
 [Installer und Versionshinweise für 1.7.11](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.11)
+
+## Free-Start, Lizenzoptionen und Terraintexturen – 1.7.12
+
+**Ohne gültige Vollversion-Aktivierung bleibt Free aktiv.** Frische Installationen enthalten keine voraktivierte Vollversion: maximal 100 Assets und Karten-Vorschau. Erstellen, Bearbeiten, Speichern und PNG-Export benötigen eine Freischaltung; diese Grenzen werden auch im Hauptprozess geprüft.
+
+Unter **Daemon-Menü → Optionen** stehen alle Editionen mit ihrem Status. Die verdeckte Eingabe akzeptiert gültige Lizenzschlüssel, speichert sie Windows-verschlüsselt und zeigt danach nur den Status. Bestehende gültige Aktivierungen bleiben erhalten. Erfolgreiche Aktivierung zeigt einmalig ein goldenes D mit Partikelexplosion; bei falschem Schlüssel oder bloßer Tarifauswahl erscheint kein Erfolgseffekt. Private Schlüssel werden nicht mit dem Installer verteilt.
+
+Unter **Karten → Terrain** sind 13 neue PNGs einsortiert: **Gebirge / Bergwände (6)**, **Felsen / Naturfels (6)** und **Wege / Sandsteinplatten (1)**. Die Originalauflösung beträgt 1254 × 1254 Pixel. Der Standardfilter zeigt alle Formate, sodass PNG und DDS sichtbar sind. Gemalte Materialien werden mit der Kartenkopie gespeichert.
+
+**PayPal-Käufe und der 7-Tage-Test sind weiterhin nicht live.** Weitere Abo-Funktionen sind geplant. Die Kauf-Erfolgsanimation wird erst an eine tatsächlich bestätigte Zahlung und Lizenzfreischaltung angebunden.
+
+Geprüft: 94 Tests, Standardzustand Free einschließlich vorhandener Karte, 100-Asset-Limit, gültige Aktivierung und Neustart, alle neuen Texturvorschauen und Kartenexport sowie das Hintergrundupdate von 1.7.11 auf 1.7.12 ohne sichtbares Setupfenster. Alle 1.497 installierten Programmdateien wurden mit dem Paket verglichen.
+
+[Installer und Versionshinweise für 1.7.12](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.12)

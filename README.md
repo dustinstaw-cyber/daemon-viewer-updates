@@ -191,3 +191,17 @@ Die neue Shop-Oberfläche zeigt Tarife, Warenkorb, Zahlungsmethoden und eine gol
 Geprüft: 92 automatisierte Tests, native Kartenbedienung einschließlich Speichern/Wiederladen, Shop-Demo ohne Lizenzänderung, Free-Start und gespeicherte Vollversion. Das Hintergrundupdate von 1.7.11 auf 1.7.13 startete ohne sichtbares Setupfenster neu; alle 2.474 installierten Programmdateien stimmen per SHA-256 mit dem Paket überein.
 
 [Installer und Versionshinweise für 1.7.13](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.13)
+
+## Terrain, Nahnavigation und gemeinsamer Shop – 1.7.14
+
+Gemalte Böden und ihre TextureSets werden auch dann wieder gefunden, wenn der gesamte gespeicherte Projektordner geöffnet oder verschoben wurde. Karten mit gleichnamigen TextureSets verwenden ihre eigenen Ressourcen. Neue Karten starten mit leerer Palette und unbemalter Terrainfläche. Das Anklicken eines Materials wählt nur den Pinsel; der Radiergummi setzt bemalte Flächen auf den leeren Grund zurück.
+
+Wasser und Lava können mit **Bis zum Beckenrand** die Überlaufhöhe einer erkannten geschlossenen Absenkung übernehmen. Wird kein Becken erkannt, bleibt die eingestellte Höhe erhalten. Für offene Gewässer lässt sich weiterhin eine feste Höhe wählen. Geändertes Terrain aktualisiert die Uferdarstellung. Lava ist weiterhin ein Editor-Material und benötigt für das Spiel eine entsprechende Client-Anbindung.
+
+Der Mausrad-Nahzoom bleibt auch bei kurzem Kamerazielabstand beweglich. Rechts halten und ziehen verschiebt die Ansicht auch nah an der Map zügig; beide Maustasten drehen weiterhin die Kamera.
+
+Oben gibt es jetzt **einen Button „Shop & Warenkorb“**. Innerhalb desselben Fensters führen Tarife, Warenkorb und Demo-Abschluss durch einen gemeinsamen Ablauf. Eine schmale Anthrazit-Scrollbar mit goldenem Griff ergänzt das Design. **Alle Zahlungsabläufe bleiben Demo und ändern keine Lizenz.** Ohne gültige Aktivierung bleibt Free aktiv. Das Menü öffnet weiterhin über das D-Logo.
+
+Geprüft: **97 automatisierte Tests**, native Mausrad- und Rechtsklick-Eingaben, leere Map trotz Materialwahl, beide Bodentexturen nach Prozessneustart und der gemeinsame Shop. Das Hintergrundupdate von **1.7.13 auf 1.7.14** installierte ohne sichtbares Setupfenster und startete automatisch neu. Alle **2.477 Programmdateien** wurden per SHA-256 mit dem Paket verglichen.
+
+[Installer und Versionshinweise für 1.7.14](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.14)

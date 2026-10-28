@@ -177,3 +177,17 @@ Unter **Karten → Terrain** sind 13 neue PNGs einsortiert: **Gebirge / Bergwän
 Geprüft: 94 Tests, Standardzustand Free einschließlich vorhandener Karte, 100-Asset-Limit, gültige Aktivierung und Neustart, alle neuen Texturvorschauen und Kartenexport sowie das Hintergrundupdate von 1.7.11 auf 1.7.12 ohne sichtbares Setupfenster. Alle 1.497 installierten Programmdateien wurden mit dem Paket verglichen.
 
 [Installer und Versionshinweise für 1.7.12](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.12)
+
+## Kartenwerkzeuge, Standardobjekte und Shop-Demo – 1.7.13
+
+**Shop** und **Warenkorb** stehen als unabhängige Schaltflächen in der Hauptkopfzeile. Das Menü bleibt am D-Logo oben links; Beenden steht unten. Der zusätzliche GitHub-Button in Versionen entfällt.
+
+Unter **Karten → Terrain** enthält die vorhandene Texturbibliothek 20 neue Böden, sortiert in Natur, Pflaster/Tempel und magische Böden. Es gibt keinen zusätzlichen Hauptleisten-Button dafür. Die Objektbibliothek enthält standardmäßig **227 Modelle** mit neu erzeugten neutralen Vorschauen: das Schiffswrack und 226 Modelle des bereitgestellten Mapping-Pakets. Alle Nutzer sehen die Standardressourcen; Kartenbearbeitung benötigt weiterhin eine gültige Freischaltung.
+
+Mit gleichzeitig gehaltener linker und rechter Maustaste lässt sich die Kamera drehen, ohne auf der Map zu malen. Wasser und Lava besitzen animierte Editor-Materialien. Der Flüssigkeitstyp wird zusätzlich in DaemonLiquids.json gespeichert; die Lava-Darstellung im Spiel benötigt weiterhin eine entsprechende Client-Anbindung. Der Radiergummi entfernt Terraintexturen, Flüssigkeiten oder Objekte im Pinselbereich; Rückgängig wird unterstützt.
+
+Die neue Shop-Oberfläche zeigt Tarife, Warenkorb, Zahlungsmethoden und eine goldene Demo-Bestätigung. **Es findet keine Zahlung, kein Abo-Abschluss und keine Test- oder Lizenzaktivierung statt.** Zahlungsanbieter und Testserver sind noch nicht eingerichtet. Eine reine Demo ändert den tatsächlichen Lizenzstatus nicht. Ohne gültige Aktivierung bleibt Free aktiv; bestehende Aktivierungen bleiben erhalten.
+
+Geprüft: 92 automatisierte Tests, native Kartenbedienung einschließlich Speichern/Wiederladen, Shop-Demo ohne Lizenzänderung, Free-Start und gespeicherte Vollversion. Das Hintergrundupdate von 1.7.11 auf 1.7.13 startete ohne sichtbares Setupfenster neu; alle 2.474 installierten Programmdateien stimmen per SHA-256 mit dem Paket überein.
+
+[Installer und Versionshinweise für 1.7.13](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.13)

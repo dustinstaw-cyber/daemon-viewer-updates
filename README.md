@@ -15,6 +15,16 @@ Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt
 
 
 
+## Neu in 1.7.23: Schneller laden und Kartenbibliothek in Nachtgold
+
+Die Vorbereitung der mitgelieferten Kartenressourcen dauert im lokalen Vergleichstest **2,2 statt 21,1 Sekunden**. Alle 2.518 Property-Zuordnungen, 5.299 Objektmodelle und 706 Terrain-Auswahlbilder bleiben gleich. Das ist die Bibliotheksvorbereitung; die Ladezeit einer konkreten 3D-Map hängt von deren Größe ab. Unveränderte Modellminiaturen bleiben über Updates hinweg im Cache. Die einmalige Startanimation öffnet das Hauptfenster nach rund fünf Sekunden.
+
+Die Kartenbibliothek bietet jetzt **Leeren** mit Bestätigung und Drag & Drop für Ordner, ZIP, RAR und 7z. Das Leeren entfernt nur gemerkte Quellen; Originaldateien und die geöffnete Map mit ungespeicherten Änderungen bleiben erhalten. Die Liste bleibt nach Neustart leer. Die Materialien-/Objektleiste erhält abgerundete Reiter, Anthrazitflächen, Goldrahmen und eine Bodensuche. Goldimpulse begleiten Klicks in Assets, Karten und Extractor; feine Hintergrundpartikel und stärkere Import-/Bestätigungsimpulse beachten reduzierte Bewegung und pausieren ohne Fensterfokus.
+
+Geprüft sind 147 automatisierte Tests, echte ZIP-/RAR-/7z-Importe über die Electron-Dateibrücke, der Erhalt einer ungespeicherten Karte beim Import und Leeren sowie alle 1.911 Objektplatzierungen der B1-Testmap. Die frische Installation bleibt Free. Private Adminzugänge werden nicht mitgeliefert.
+
+[Installer und Versionshinweise 1.7.23](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.23)
+
 ## Neu in 1.7.22: Ein Startdurchlauf und bereinigte Bibliotheken
 
 Die Startanimation läuft einmal und öffnet danach das Hauptfenster. Das Fenster wartet auf die erste Darstellung und die Kartenbibliothek wird erst beim Öffnen des Kartenbereichs vorbereitet. Bei verspäteter Bereitschaft bleibt der letzte Intro-Zustand sichtbar, statt neu anzufangen. Im nativen Starttest erfolgt der Übergang nach rund acht Sekunden.

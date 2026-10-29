@@ -15,6 +15,16 @@ Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt
 
 
 
+## Neu in 1.7.24: Nur Änderungen aktualisieren
+
+**Bereits installierter Viewer:** Im Programm nach Updates suchen. Für den Wechsel von 1.7.23 auf 1.7.24 werden rund **79 MB statt 1,82 GB** heruntergeladen. Der Patch ersetzt 23 geänderte Dateien und erhält 26.087 unveränderte Programm-, Modell- und Texturdateien. Im isolierten Test dauerte die Installation rund 17 Sekunden; Download und anschließender Programmstart kommen hinzu. 151 automatisierte Tests, der vollständige Dateivergleich und der Erhalt eigener Einstellungen, Tickets und Notizen sind erfolgreich geprüft.
+
+**Neue Installation oder Version vor 1.7.23:** Den als **Vollinstaller für Neuinstallationen** gekennzeichneten Download verwenden. Das kleine Änderungspaket benötigt eine passende vorhandene Installation und lehnt leere Ziele ab.
+
+Der neue Updater bevorzugt künftig das genaue Änderungspaket für die installierte Vorversion. Der feste Build-Ablauf speichert unveränderliche Vergleichsstände und erstellt passende Pakete für bekannte Vorversionen. Die Veröffentlichung wird ohne erfolgreiche Patch-Prüfung gesperrt. Ein Vollinstaller bleibt für Neuinstallationen und fehlende Ressourcenbasen verfügbar. Gültige bereits heruntergeladene Updates werden nach erneuter Prüfsummenprüfung wiederverwendet.
+
+[Downloads und Versionshinweise 1.7.24](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.24)
+
 ## Neu in 1.7.23: Schneller laden und Kartenbibliothek in Nachtgold
 
 Die Vorbereitung der mitgelieferten Kartenressourcen dauert im lokalen Vergleichstest **2,2 statt 21,1 Sekunden**. Alle 2.518 Property-Zuordnungen, 5.299 Objektmodelle und 706 Terrain-Auswahlbilder bleiben gleich. Das ist die Bibliotheksvorbereitung; die Ladezeit einer konkreten 3D-Map hängt von deren Größe ab. Unveränderte Modellminiaturen bleiben über Updates hinweg im Cache. Die einmalige Startanimation öffnet das Hauptfenster nach rund fünf Sekunden.

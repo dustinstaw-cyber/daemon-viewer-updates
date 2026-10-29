@@ -15,6 +15,16 @@ Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt
 
 
 
+## Neu in 1.7.21: Prisma-Objekte und direkte Mausnavigation
+
+Prisma-Kartenobjekte und ihre verfügbaren Materialtexturen sind standardmäßig unter **Karten → Objekte** enthalten, in zwölf Untergruppen für Vegetation, Felsen, Bauwerke, Ruinen, Lampen, Schiffe und Dekoration. Der gemeinsame Katalog zeigt 5.413 Modelle. Prisma-Maps werden nicht mitinstalliert. Bereits vorhandene identische Modelle und Texturen werden wiederverwendet.
+
+**Rechte Maustaste halten und bewegen** verschiebt die Kamera im Objektmodus direkt, ohne Alt oder Umschalt. Die Bereichsauswahl nutzt den eigenen Knopf **Bereich markieren** und einen Rahmen mit der linken Taste. Fehlende Miniaturen werden aus echten GR2- und SpeedTree-Modellen erzeugt und gespeichert.
+
+Ein vorzeitiger Start während einer laufenden Installation wartet nun außerhalb des Viewers, bis alle Dateien fertig eingespielt sind. Die Programmdateien werden vor dem Laden geprüft. Getestet sind 136 automatisierte Prüfungen, native Mausbedienung und Miniaturen, Texturverweise sowie das Upgrade von 1.7.20. Einzelne bereits im Prisma-Quellpaket fehlerhafte Modelle oder fehlende Texturen sind in den Versionshinweisen aufgeführt.
+
+[Installer und Versionshinweise 1.7.21](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.21)
+
 ## Neu in 1.7.20: SpeedTree, Ashura-Kartenobjekte und schärfere Böden
 
 Originale SpeedTree-Bäume mit Stamm, Ästen und kameragerechten Blattflächen sind im Kartenbereich verfügbar. Zentrale Property-Indizes und Karteneffekte werden geladen; die Testkarte metin2_map_b1 zeigt alle 1.911 Objektplatzierungen.

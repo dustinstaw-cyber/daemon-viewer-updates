@@ -15,6 +15,16 @@ Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt
 
 
 
+## Neu in 1.7.22: Ein Startdurchlauf und bereinigte Bibliotheken
+
+Die Startanimation läuft einmal und öffnet danach das Hauptfenster. Das Fenster wartet auf die erste Darstellung und die Kartenbibliothek wird erst beim Öffnen des Kartenbereichs vorbereitet. Bei verspäteter Bereitschaft bleibt der letzte Intro-Zustand sichtbar, statt neu anzufangen. Im nativen Starttest erfolgt der Übergang nach rund acht Sekunden.
+
+Die Prüfung von 5.418 Modelldateien und allen mitgelieferten Bildtexturen hat zur gezielten Entfernung von **60 Dateien** geführt: drei nicht lesbare GR2-Modelle, zwölf identische Modellkopien mit gleichen Materialien und Kollisionen sowie 45 identische Terraintexturen. Alte Ressourcenpfade bleiben über Weiterleitungen verwendbar. Weitere identische Einträge werden in der Auswahl zusammengefasst; sieben gültige Animationsdateien ohne Geometrie erscheinen nicht mehr als Kartenobjekte. Die Bildtexturen waren lesbar. Fehlende Quelltexturverweise bleiben als Hinweise erhalten.
+
+Geprüft sind 140 automatisierte Tests, 8.192 Materialverweise, alle 1.911 Objektplatzierungen der Testmap und das Upgrade von 1.7.21. Dabei bleiben Daten, Einstellungen und absichtlich geänderte Ressourcendateien erhalten. Der Dateivergleich bestätigt alle 26.088 installierten Paketdateien. Die Standardbibliothek bietet 5.299 Objektmodelle und 706 Terrain-Auswahlbilder.
+
+[Installer und Versionshinweise 1.7.22](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.22)
+
 ## Neu in 1.7.21: Prisma-Objekte und direkte Mausnavigation
 
 Prisma-Kartenobjekte und ihre verfügbaren Materialtexturen sind standardmäßig unter **Karten → Objekte** enthalten, in zwölf Untergruppen für Vegetation, Felsen, Bauwerke, Ruinen, Lampen, Schiffe und Dekoration. Der gemeinsame Katalog zeigt 5.413 Modelle. Prisma-Maps werden nicht mitinstalliert. Bereits vorhandene identische Modelle und Texturen werden wiederverwendet.

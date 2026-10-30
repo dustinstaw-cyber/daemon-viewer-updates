@@ -6,7 +6,7 @@
 
 Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt.
 
-[**Aktuellen Windows-Installer herunterladen**](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/latest)
+[**Windows herunterladen · Neuinstallation**](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/download/v1.7.30/Daemon_Viewer_Full_Setup_1.7.30_x64.exe) · [Alle Versionen](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases)
 
 **Ab 1.7.12 startet eine frische Installation ohne eigene Lizenz als Free-Version.**
 
@@ -14,6 +14,18 @@ Viewer für Modelle, Texturen, Effekte und Metin2-Karten mit Grau-Gold-Werkstatt
 
 
 
+
+## Neu in 1.7.31: Neuer Shop und Datei-Patches
+
+**Bereits installiert:** Im Viewer unter Updates nach der Version 1.7.31 suchen. Dieses kleine Paket stellt den bisherigen Updater einmalig um. Künftige normale Patches laden nur geänderte Programmdateien und starten den Viewer nach dem Austausch neu. Dafür wird kein neuer Installer und keine neue Electron-Laufzeit benötigt. Unveränderte Objekt- und Texturpakete bleiben erhalten.
+
+**Neuinstallation:** Der Download oben installiert die Basisversion 1.7.30. Danach im Programm einmal das Update 1.7.31 bestätigen; anschließend erhältst du die weiteren Datei-Patches im Viewer. Ohne gültige Lizenz startet das Programm als Free-Version. Ein Vollinstaller bleibt für Neuinstallationen, Reparaturen oder besondere Laufzeitänderungen vorgesehen.
+
+Der neue Schwarz-Gold-Shop enthält dein D-Logo, Goldanimationen, getrennte Bereiche für Daemon Viewer und Daemon Bot, Monats-/Jahrespreise, Paketvergleiche und einen gemeinsamen Warenkorb. **Zahlungs- und Testaktivierungsabläufe sind weiterhin Vorschauen und verändern keine Lizenz. Die Live-Spielsteuerung des Daemon Bot ist noch nicht angebunden; die Bot-Pakete beschreiben geplante Funktionen.**
+
+Dateipakete und enthaltene Dateien werden geprüft. Vor dem Austausch entstehen Sicherungen; ein fehlgeschlagener Austausch wird zurückgesetzt. Eigene Projekte und Profile bleiben erhalten. Die Umstellung und die Bedienung werden auf einer getrennten Installation geprüft.
+
+[Umstellung und Versionshinweise 1.7.31](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/tag/v1.7.31)
 
 ## Neu in 1.7.24: Nur Änderungen aktualisieren
 

@@ -1,6 +1,6 @@
 const fs=require('fs'),p=require('path'),z=require('zlib'),crypto=require('crypto'),assert=require('assert/strict'),{execFileSync}=require('child_process');
 const repo='dustinstaw-cyber/daemon-viewer-updates',version='1.7.50',tag='v'+version,old='1.7.49',out=p.join(process.env.RUNNER_TEMP||__dirname,'daemon-release-'+version),hash=b=>crypto.createHash('sha256').update(b).digest('hex');fs.mkdirSync(out,{recursive:true});
-async function bytes(url){for(let n=0;n<5;n++)try{const r=await fetch(url,{headers:{'User-Agent':'Daemon-Verified-Publisher'},signal:AbortSignal.timeout(90000)});assert(r.ok,r.status+' '+url);return Buffer.from(await r.arrayBuffer());}catch(e){if(n===4)throw e;await new Promise(r=>setTimeout(r,1000*(n+1)));}}
+async function bytes(url){for(let n=0;n<5;n++)try{const r=await fetch(url,{headers:{'User-Agent':'Daemon-Verified-Publisher',...(new URL(url).hostname==='api.github.com'&&process.env.GH_TOKEN?{Authorization:'Bearer '+process.env.GH_TOKEN}:{})},signal:AbortSignal.timeout(90000)});assert(r.ok,r.status+' '+url);return Buffer.from(await r.arrayBuffer());}catch(e){if(n===4)throw e;await new Promise(r=>setTimeout(r,1000*(n+1)));}}
 const json=async url=>JSON.parse(await bytes(url));
 function gh(args){return execFileSync('gh',args,{encoding:'utf8',maxBuffer:4*1024*1024,windowsHide:true});}
 function verifyEnvelope(e,key){assert.equal(e.schema,1);assert.equal(e.algorithm,'Ed25519');const b=Buffer.from(e.payload,'base64');assert(crypto.verify(null,b,key,Buffer.from(e.signature,'base64')));return JSON.parse(b);}

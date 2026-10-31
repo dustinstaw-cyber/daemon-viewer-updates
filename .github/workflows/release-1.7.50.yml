@@ -27,3 +27,4 @@ jobs:
           node $publisher
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 # Revision 2: paused texture redraw and draft-release lookup verified.
+# Revision 3: authenticated GitHub API reads avoid runner IP rate limits.

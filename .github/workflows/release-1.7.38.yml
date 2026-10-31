@@ -22,3 +22,5 @@ jobs:
           set -euo pipefail
           curl --fail --silent --show-error --location "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/release-payloads/publish-1.7.38.cjs" -o "${RUNNER_TEMP}/publish-1.7.38.cjs"
           node "${RUNNER_TEMP}/publish-1.7.38.cjs"
+
+# Release preparation revision 2: inspect draft by ID from release collection.

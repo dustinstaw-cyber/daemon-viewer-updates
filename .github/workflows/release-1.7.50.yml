@@ -26,3 +26,4 @@ jobs:
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$env:GITHUB_REPOSITORY/$env:GITHUB_SHA/release-payloads/publish-1.7.50.cjs" -OutFile $publisher -MaximumRetryCount 3
           node $publisher
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+# Revision 2: paused texture redraw and draft-release lookup verified.

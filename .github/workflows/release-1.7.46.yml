@@ -1,0 +1,26 @@
+name: Publish verified Daemon Viewer 1.7.46 patch
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/release-1.7.46.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: daemon-viewer-release-1.7.46
+  cancel-in-progress: false
+jobs:
+  verified-file-patch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Rebuild verified file patches and publish without changing legacy latest
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/release-payloads/publish-1.7.46.cjs" -o "${RUNNER_TEMP}/publish-1.7.46.cjs"
+          node "${RUNNER_TEMP}/publish-1.7.46.cjs"
+
+

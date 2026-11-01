@@ -5,11 +5,17 @@ on:
     paths: ['.github/workflows/full-installer-1.7.56.yml']
 permissions:
   contents: read
+  actions: write
 jobs:
   complete-installer:
     runs-on: windows-latest
     timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
+      - name: Cancel superseded installer build
+        shell: pwsh
+        run: gh run cancel 41334292319 --repo dustinstaw-cyber/daemon-viewer-updates; exit 0
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           sparse-checkout: installer-build/1.7.56
@@ -36,3 +42,5 @@ jobs:
           path: installer-build/1.7.56/payload-verification.json
 
 # Include verified prebuilt library metadata (revision 2).
+
+# Revision 3: include immutable public license key; faster full-package compression.

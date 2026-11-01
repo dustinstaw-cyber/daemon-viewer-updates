@@ -39,3 +39,5 @@ jobs:
             installer-build/1.7.56/qa/*.png
             installer-build/1.7.56/qa-install.log
           retention-days: 14
+
+# Normalize PEM line endings before verifying the pinned publisher fingerprint.

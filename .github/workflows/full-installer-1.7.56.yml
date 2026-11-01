@@ -1,0 +1,36 @@
+name: Build full Daemon Viewer installer 1.7.56
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/full-installer-1.7.56.yml']
+permissions:
+  contents: read
+jobs:
+  complete-installer:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          sparse-checkout: installer-build/1.7.56
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.22.1'
+      - name: Reconstruct exact verified payload and build installer
+        shell: pwsh
+        env:
+          BASE_SETUP_SHA256: e1b49585a05ea65db1cb86f3db1a65dc11f7b3eee676545d1f77b2d7708f8405
+        run: |
+          node installer-build/1.7.56/build-remote.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: Daemon-Viewer-Full-Installer-1.7.56
+          path: installer-build/1.7.56/dist/*
+          compression-level: 0
+          retention-days: 7
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: installer-payload-audit
+          path: installer-build/1.7.56/payload-verification.json

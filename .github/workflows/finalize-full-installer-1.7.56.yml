@@ -29,3 +29,5 @@ jobs:
           name: full-installer-1.7.56-publication
           path: installer-build/1.7.56/final-publication.json
           retention-days: 14
+
+# Read test-log bytes without emitting terminal control sequences.

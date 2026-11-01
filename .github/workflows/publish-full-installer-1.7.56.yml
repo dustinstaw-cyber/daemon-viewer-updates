@@ -41,3 +41,5 @@ jobs:
           retention-days: 14
 
 # Normalize PEM line endings before verifying the pinned publisher fingerprint.
+
+# Publish the exact whitelisted installer artifact after fresh-install and repair tests.

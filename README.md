@@ -1,3 +1,14 @@
+<!-- full-installer-1.7.56 -->
+## Vollständiger Installer 1.7.56
+
+[Daemon Viewer 1.7.56 für Windows x64 herunterladen](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/download/v1.7.56/Daemon_Viewer_Setup_1.7.56_x64.exe) · 1.79 GB
+
+Enthält die aktuelle Anwendung, Electron 45.2.1 und die mitgelieferten Objekt- und Texturbibliotheken. Eine Neuinstallation startet in **Free** mit **Englisch** als Standardsprache und ohne importierte Benutzerdaten. Für eine Reparatur den bisherigen Installationsordner auswählen; eigene Dateien und das Benutzerprofil bleiben erhalten.
+
+Künftige Aktualisierungen werden weiterhin als kleine Datei-Patches angeboten.
+
+---
+
 <p align="center"><img src="assets/daemon-logo.png" width="144" alt="Daemon Viewer"></p>
 
 # Daemon Viewer

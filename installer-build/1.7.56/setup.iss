@@ -67,6 +67,14 @@ function IsTestInstall: Boolean;
 begin
   Result := ExpandConstant('{param:DAEMONTEST|0}') = '1';
 end;
+function InitializeSetup: Boolean;
+begin
+  if IsTestInstall then
+    CreateMutex('Local\DaemonViewerUpdate-82F9184C-7044-4A20-90AC-6BEA1623C997')
+  else
+    CreateMutex('Local\DaemonViewerUpdate-86D16C7B-BD63-4C42-96F9-0ED85E421D3A');
+  Result := True;
+end;
 function DefaultDirectory(Param: String): String;
 var Command, Candidate: String; LastQuote: Integer;
 begin

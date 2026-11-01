@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Cancel superseded installer build
         shell: pwsh
-        run: gh run cancel 41334292319 --repo dustinstaw-cyber/daemon-viewer-updates; exit 0
+        run: gh run cancel 41335133803 --repo dustinstaw-cyber/daemon-viewer-updates; exit 0
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           sparse-checkout: installer-build/1.7.56
@@ -44,3 +44,5 @@ jobs:
 # Include verified prebuilt library metadata (revision 2).
 
 # Revision 3: include immutable public license key; faster full-package compression.
+
+# Revision 4: shared startup lock stays active until installer exits.

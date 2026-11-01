@@ -46,3 +46,5 @@ jobs:
 # Revision 3: include immutable public license key; faster full-package compression.
 
 # Revision 4: shared startup lock stays active until installer exits.
+
+# Revision 5: prune superseded baseline files against the exact current payload whitelist.

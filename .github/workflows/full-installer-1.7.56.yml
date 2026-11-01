@@ -34,3 +34,5 @@ jobs:
         with:
           name: installer-payload-audit
           path: installer-build/1.7.56/payload-verification.json
+
+# Include verified prebuilt library metadata (revision 2).

@@ -1,0 +1,11 @@
+{
+  "name": "Daemon_M2_Tool_Setup_1.7.68_x64.exe",
+  "version": "1.7.68",
+  "size": 1791583181,
+  "sha256": "d53b5cec3f8c572f72916c825c23bb522e84594acf170bb5d1e94918cca25ca9",
+  "payloadFiles": 25590,
+  "payloadSHA256": "1a2b8b34120c34e48af05e1477c5f7c067c628403e37544cc1ef0c28e62b23ac",
+  "verifiedFreshAndRepair": true,
+  "runId": "41616229003",
+  "head": "a3548cde98341ab0a8d49088e3acf70ec7f8d3ec"
+}

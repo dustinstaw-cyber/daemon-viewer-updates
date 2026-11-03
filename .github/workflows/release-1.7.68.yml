@@ -1,0 +1,50 @@
+name: Publish signed Daemon M2 Tool 1.7.68 Nachtkrone logo and complete installer
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/release-1.7.68.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: daemon-viewer-release-1.7.68
+  cancel-in-progress: false
+jobs:
+  verified-m2-tool-patch:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.22.1'
+      - name: Reproduce and publish independently signed change packages
+        shell: pwsh
+        run: |
+          $publisher = Join-Path $env:RUNNER_TEMP 'publish-1.7.68.cjs'
+          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$env:GITHUB_REPOSITORY/$env:GITHUB_SHA/release-payloads/publish-1.7.68.cjs" -OutFile $publisher -MaximumRetryCount 3
+          node $publisher
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+  full-installer:
+    needs: verified-m2-tool-patch
+    runs-on: windows-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          sparse-checkout: installer-build/1.7.68
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.22.1'
+      - name: Install isolated UI test dependency
+        shell: pwsh
+        run: npm install --prefix installer-build/1.7.68/qa-deps playwright@1.62.1 --ignore-scripts --no-audit --no-fund
+      - name: Build and test full installer with Nachtkrone
+        shell: pwsh
+        run: |
+          node installer-build/1.7.68/build-installer-remote.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

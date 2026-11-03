@@ -26,3 +26,5 @@ jobs:
         run: |
           node installer-build/1.7.68/finalize-installer.cjs
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+# Retry publication safely after a transient GitHub metadata connection reset.

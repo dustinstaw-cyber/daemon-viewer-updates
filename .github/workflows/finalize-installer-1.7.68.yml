@@ -1,0 +1,28 @@
+name: Publish signed Daemon M2 Tool Nachtkrone installer 1.7.68
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/finalize-installer-1.7.68.yml']
+permissions:
+  contents: write
+concurrency:
+  group: daemon-full-installer-1.7.68
+  cancel-in-progress: false
+jobs:
+  verify-and-publish:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          sparse-checkout: installer-build/1.7.68
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.22.1'
+      - name: Verify owner-signed candidate and publish full installer
+        shell: pwsh
+        run: |
+          node installer-build/1.7.68/finalize-installer.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

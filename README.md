@@ -1,3 +1,16 @@
+<!-- full-installer-1.7.68 -->
+## Daemon M2 Tool · Nachtkrone & Admin Nexus
+
+[Vollständigen Windows-x64-Installer 1.7.68 herunterladen](https://github.com/dustinstaw-cyber/daemon-viewer-updates/releases/download/v1.7.68/Daemon_Viewer_Setup_1.7.68_x64.exe) · 1.79 GB
+
+Enthält die aktuelle Anwendung, das neue Nachtkrone-Logo in Oberfläche, Startanimation, EXE und Setup sowie den privaten Admin-Nexus. Frische Installationen starten mit Free und Englisch, ohne Benutzerimporte oder privaten Adminzugang. Eigene Dateien und Profile bleiben bei einer Reparatur erhalten.
+
+Bestehende Nutzer erhalten regulär den kleinen signierten Datei-Patch. Für den Austausch des fest eingebetteten EXE-Symbols den vollständigen Installer verwenden. Zahlungs- und Lizenzserver sind nicht verbunden; der Admin-Nexus verwaltet lokale Daten.
+
+Technischer Download- und EXE-Dateiname bleiben für ältere Updater kompatibel. Künftige Routine-Patches bleiben kleine Änderungspakete.
+
+---
+
 <!-- full-installer-1.7.56 -->
 ## Vollständiger Installer 1.7.56
 

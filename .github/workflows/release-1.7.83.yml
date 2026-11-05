@@ -1,18 +1,56 @@
-name: Prepare updated 1.7.83 payload with Enyro waterfalls
+name: Publish signed Daemon M2 Tool 1.7.83 map resizing and continuous terrain sculpting
+
 on:
+
   push:
+
     branches: [main]
+
     paths: ['.github/workflows/release-1.7.83.yml']
+
   workflow_dispatch:
+
 permissions:
-  contents: read
+
+  contents: write
+
 concurrency:
+
   group: daemon-viewer-release-1.7.83
-  cancel-in-progress: true
+
+  cancel-in-progress: false
+
 jobs:
-  prepare-updated-payload:
+
+  verified-environment-patch:
+
     runs-on: windows-latest
+
+    timeout-minutes: 60
+
+    env:
+
+      GH_TOKEN: ${{ github.token }}
+
     steps:
-      - name: Await updated verified payload
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+
+        with:
+
+          node-version: '24.22.1'
+
+      - name: Reproduce and publish independently signed change packages
+
         shell: pwsh
-        run: Write-Output 'Publication replaced by the requested Enyro waterfall addition. Updated signed payload will follow.'
+
+        run: |
+
+          $publisher = Join-Path $env:RUNNER_TEMP 'publish-1.7.83.cjs'
+
+          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$env:GITHUB_REPOSITORY/$env:GITHUB_SHA/release-payloads/publish-1.7.83.cjs" -OutFile $publisher -MaximumRetryCount 3
+
+          node $publisher
+
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+

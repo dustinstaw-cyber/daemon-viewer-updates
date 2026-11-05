@@ -51,13 +51,13 @@ function verifyEnvelope(e,key){assert.equal(e.schema,1);assert.equal(e.algorithm
 
  const signature='Daemon_Viewer_Release_'+version+'.json',sums='SHA256SUMS-'+version+'.txt';fs.writeFileSync(p.join(out,signature),JSON.stringify(payload.envelope));const extras=[...languages,{name:signature,sha256:hash(fs.readFileSync(p.join(out,signature)))}];fs.writeFileSync(p.join(out,sums),[...built,...extras].map(f=>f.sha256+'  '+f.name).join('\n')+'\n');const expected=[...built,...extras,{name:sums,sha256:hash(fs.readFileSync(p.join(out,sums)))}];
 
- console.log('51 independently signed canonical patch packages reproduced. Latest patch: '+built.at(-1).size+' bytes. Map resize copies and continuous hold-to-sculpt terrain tools. No installer or engine package.');if(process.env.DAEMON_LOCAL_PAYLOAD)return;
+ console.log('51 independently signed canonical patch packages reproduced. Latest patch: '+built.at(-1).size+' bytes. Map resize copies, continuous hold-to-sculpt and the original Enyro waterfall. No installer or engine package.');if(process.env.DAEMON_LOCAL_PAYLOAD)return;
 
  let existing;try{existing=JSON.parse(gh(['api','repos/'+repo+'/releases?per_page=100'])).find(r=>r.tag_name===tag);}catch{}
 
  if(existing&&!existing.draft){assert.equal(existing.assets.length,expected.length);for(const f of expected){const a=existing.assets.find(a=>a.name===f.name);assert(a);assert.equal(a.digest,'sha256:'+f.sha256);if(f.baseline)assert.equal(a.label,'Datei-Patch ab '+f.baseline);}for(const f of built){const a=existing.assets.find(a=>a.name===f.name),label='Datei-Patch ab '+f.baseline;if(a.label!==label)gh(['api','--method','PATCH','repos/'+repo+'/releases/assets/'+a.id,'-f','label='+label]);}const verified=await json('https://api.github.com/repos/'+repo+'/releases/tags/'+tag);for(const f of built)assert.equal(verified.assets.find(a=>a.name===f.name).label,'Datei-Patch ab '+f.baseline);console.log('Immutable release bytes verified; updater compatibility labels verified.');return;}
 
- const notes=p.join(out,'notes.md');fs.writeFileSync(notes,payload.notes);if(!existing)gh(['release','create',tag,'--repo',repo,'--draft','--title','Daemon M2 Tool '+version+' · Map-Größe & Absenken','--notes-file',notes,'--target',process.env.GITHUB_SHA]);
+ const notes=p.join(out,'notes.md');fs.writeFileSync(notes,payload.notes);if(!existing)gh(['release','create',tag,'--repo',repo,'--draft','--title','Daemon M2 Tool '+version+' · Map-Größe, Absenken & Enyro-Wasserfall','--notes-file',notes,'--target',process.env.GITHUB_SHA]);
 
  for(const f of expected)gh(['release','upload',tag,p.join(out,f.name)+(f.baseline?'#Datei-Patch ab '+f.baseline:''),'--repo',repo,'--clobber']);const draft=JSON.parse(gh(['api','repos/'+repo+'/releases?per_page=100'])).find(r=>r.tag_name===tag);assert(draft.draft);assert.equal(draft.assets.length,expected.length);for(const f of expected){const a=draft.assets.find(a=>a.name===f.name);assert(a);assert.equal(a.digest,'sha256:'+f.sha256);if(f.baseline)assert.equal(a.label,'Datei-Patch ab '+f.baseline);}
 

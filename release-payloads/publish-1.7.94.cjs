@@ -33,7 +33,7 @@ const ghAsync=args=>require('node:util').promisify(require('node:child_process')
 function verifyEnvelope(e,key){assert.equal(e.schema,1);assert.equal(e.algorithm,'Ed25519');const b=Buffer.from(e.payload,'base64');assert(crypto.verify(null,b,key,Buffer.from(e.signature,'base64')));return JSON.parse(b);}
 
 async function ensureLegacyChannelSize(){
- const publicList=async()=>{const r=await fetch('https://api.github.com/repos/'+repo+'/releases?per_page=10',{headers:{Accept:'application/vnd.github+json','User-Agent':'Daemon-Legacy-Channel-Check'},signal:AbortSignal.timeout(20000)});assert(r.ok);const text=await r.text();return{length:text.length,releases:JSON.parse(text)};};
+ const publicList=async()=>{const r=await fetch('https://api.github.com/repos/'+repo+'/releases?per_page=10&daemon_verify='+Date.now(),{headers:{Accept:'application/vnd.github+json','User-Agent':'Daemon-Legacy-Channel-Check'},signal:AbortSignal.timeout(20000)});assert(r.ok);const text=await r.text();return{length:text.length,releases:JSON.parse(text)};};
  let channel=await publicList();
  for(const superseded of ['v1.7.92','v1.7.88']){
   if(channel.length<1045000)break;
@@ -78,7 +78,7 @@ async function ensureLegacyChannelSize(){
 
  let existing;try{existing=JSON.parse(gh(['api','repos/'+repo+'/releases?per_page=100'])).find(r=>r.tag_name===tag);}catch{}
 
- if(existing&&!existing.draft){assert.equal(existing.assets.length,expected.length);for(const f of expected){const a=existing.assets.find(a=>a.name===f.name);assert(a);assert.equal(a.digest,'sha256:'+f.sha256);if(f.baseline)assert.equal(a.label,'Datei-Patch ab '+f.baseline);}for(const f of built){const a=existing.assets.find(a=>a.name===f.name),label='Datei-Patch ab '+f.baseline;if(a.label!==label)gh(['api','--method','PATCH','repos/'+repo+'/releases/assets/'+a.id,'-f','label='+label]);}const verified=await json('https://api.github.com/repos/'+repo+'/releases/tags/'+tag);for(const f of built)assert.equal(verified.assets.find(a=>a.name===f.name).label,'Datei-Patch ab '+f.baseline);console.log('Immutable release bytes verified; updater compatibility labels verified.');return;}
+ if(existing&&!existing.draft){assert.equal(existing.assets.length,expected.length);for(const f of expected){const a=existing.assets.find(a=>a.name===f.name);assert(a);assert.equal(a.digest,'sha256:'+f.sha256);if(f.baseline)assert.equal(a.label,'Datei-Patch ab '+f.baseline);}for(const f of built){const a=existing.assets.find(a=>a.name===f.name),label='Datei-Patch ab '+f.baseline;if(a.label!==label)gh(['api','--method','PATCH','repos/'+repo+'/releases/assets/'+a.id,'-f','label='+label]);}const verified=await json('https://api.github.com/repos/'+repo+'/releases/tags/'+tag);for(const f of built)assert.equal(verified.assets.find(a=>a.name===f.name).label,'Datei-Patch ab '+f.baseline);await ensureLegacyChannelSize();console.log('Immutable release bytes verified; updater compatibility labels verified.');return;}
 
  const notes=p.join(out,'notes.md');fs.writeFileSync(notes,payload.notes);if(!existing)gh(['release','create',tag,'--repo',repo,'--draft','--title','Daemon M2 Tool '+version+' - Winterpaket und Eis-Material','--notes-file',notes,'--target',process.env.GITHUB_SHA]);
 

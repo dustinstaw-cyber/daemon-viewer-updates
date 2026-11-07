@@ -1,0 +1,77 @@
+const fs=require('fs'),p=require('path'),z=require('zlib'),crypto=require('crypto'),assert=require('assert/strict'),{execFileSync}=require('child_process');
+
+
+const gzipMembers=new Map();let primed=false;
+function primeCompression(input){let at=5;assert.equal(input.subarray(0,5).toString(),'DVP1\n');while(at<input.length){assert.equal(input.readUInt32LE(at),0x00088b1f);const raw=z.inflateRawSync(input.subarray(at+10),{info:true,maxOutputLength:512*1024**2}),length=10+raw.engine.bytesWritten+8,member=input.subarray(at,at+length);assert(z.gunzipSync(member).equals(raw.buffer));gzipMembers.set(crypto.createHash('sha256').update(raw.buffer).digest('hex'),member);at+=length;}assert.equal(at,input.length);primed=true;}
+function verifiedPatchHeader(input){assert.equal(input.subarray(0,5).toString(),'DVP1\n');const header=z.inflateRawSync(input.subarray(15),{maxOutputLength:1024*1024}).toString('utf8');assert(header.endsWith(',"files":['));return JSON.parse(header.slice(0,-10)+'}');}
+function patchEncoder(){
+ const cache=gzipMembers,end=z.gzipSync(Buffer.from(']}'),{level:6});
+ return manifest=>{
+  const metadata={schema:manifest.schema,fromVersion:manifest.fromVersion,version:manifest.version,fromRuntimeSHA256:manifest.fromRuntimeSHA256,runtimeSHA256:manifest.runtimeSHA256,remove:manifest.remove};
+  const header=JSON.stringify(metadata).slice(0,-1)+',"files":[',parts=[Buffer.from('DVP1\n'),z.gzipSync(Buffer.from(header),{level:6})];let expanded=Buffer.byteLength(header)+2;
+  for(let i=0;i<manifest.files.length;i++){
+   const file=manifest.files[i],prefix=i?',':'',serialized=prefix+JSON.stringify(file),key=crypto.createHash('sha256').update(serialized).digest('hex');expanded+=Buffer.byteLength(serialized);
+   if(!cache.has(key))cache.set(key,z.gzipSync(Buffer.from(serialized),{level:6}));parts.push(cache.get(key));
+  }
+  if(expanded>512*1024**2)throw Error('Patch exceeds the installed updater expansion limit.');
+  parts.push(end);return Buffer.concat(parts);
+ };
+}
+
+
+const encodePatch=patchEncoder();
+const repo='dustinstaw-cyber/daemon-viewer-updates',version='1.7.90',tag='v'+version,old='1.7.89',out=p.join(process.env.RUNNER_TEMP||__dirname,'daemon-release-'+version),hash=b=>crypto.createHash('sha256').update(b).digest('hex');fs.mkdirSync(out,{recursive:true});
+
+async function bytes(url){for(let n=0;n<5;n++)try{const r=await fetch(url,{headers:{Accept:'application/vnd.github.raw+json','User-Agent':'Daemon-Verified-Publisher',...(new URL(url).hostname==='api.github.com'&&process.env.GH_TOKEN?{Authorization:'Bearer '+process.env.GH_TOKEN}:{})},signal:AbortSignal.timeout(90000)});assert(r.ok,r.status+' '+url);return Buffer.from(await r.arrayBuffer());}catch(e){if(n===4)throw e;await new Promise(r=>setTimeout(r,1000*(n+1)));}}
+
+const json=async url=>JSON.parse(await bytes(url));
+
+function gh(args){return execFileSync('gh',args,{encoding:'utf8',maxBuffer:4*1024*1024,windowsHide:true});}
+
+async function eachLimit(list,fn,n=3){let at=0;await Promise.all(Array.from({length:Math.min(n,list.length)},async()=>{while(at<list.length){const i=at++;await fn(list[i],i);}}));}
+const ghAsync=args=>require('node:util').promisify(require('node:child_process').execFile)('gh',args,{encoding:'utf8',maxBuffer:4*1024*1024,windowsHide:true});
+function verifyEnvelope(e,key){assert.equal(e.schema,1);assert.equal(e.algorithm,'Ed25519');const b=Buffer.from(e.payload,'base64');assert(crypto.verify(null,b,key,Buffer.from(e.signature,'base64')));return JSON.parse(b);}
+
+(async()=>{
+
+ const payloadBytes=process.env.DAEMON_LOCAL_PAYLOAD?fs.readFileSync(process.env.DAEMON_LOCAL_PAYLOAD):await (async()=>{const prefix='https://raw.githubusercontent.com/'+repo+'/'+process.env.GITHUB_SHA+'/release-payloads/',index=await json(prefix+'mapping-plateau-1.7.90.json');assert.equal(index.schema,1);assert(index.parts.length<=16);const chunks=[];for(const part of index.parts){assert(/^mapping-plateau-1\.7\.90\.part\d{2}$/.test(part.name));const b=await bytes(prefix+part.name);assert.equal(b.length,part.size);assert.equal(hash(b),part.sha256);chunks.push(b);}const b=Buffer.concat(chunks);assert.equal(hash(b),index.sha256);return b;})();const payload=JSON.parse(z.gunzipSync(payloadBytes));assert.equal(payload.version,version);assert.equal(payload.old,old);assert.equal(payload.changed.length,payload.expectedChanged);assert.equal(payload.patches.length,58);
+
+ const key=payload.publicKey;assert.equal(hash(Buffer.from(key.replaceAll('\r\n','\n'))),'73ac800430aaa48e68c9c405697fb2c16c874c953da34f037c51571fbb728e6b');const claims=verifyEnvelope(payload.envelope,key);assert.equal(claims.product,'daemon-viewer');assert.equal(claims.component,'release');assert.equal(claims.version,version);assert.deepEqual(claims.patches,payload.patches);assert.deepEqual(claims.assets,payload.extraAssets);
+
+ const prior=await json('https://api.github.com/repos/'+repo+'/releases/tags/v'+old);assert(!prior.draft);const priorSignature=await json(prior.assets.find(a=>a.name==='Daemon_Viewer_Release_'+old+'.json').browser_download_url);const priorClaims=verifyEnvelope(priorSignature,key);assert.equal(priorClaims.version,old);const bases=new Map();const loadBase=async spec=>{const a=prior.assets.find(a=>a.name===spec.name);assert(a);const b=process.env.DAEMON_LOCAL_PRIOR_DIR?fs.readFileSync(p.join(process.env.DAEMON_LOCAL_PRIOR_DIR,a.name)):await bytes(a.browser_download_url);assert.equal('sha256:'+hash(b),a.digest);assert.equal(a.digest,spec.digest);const signed=priorClaims.patches.find(x=>x.baseline===spec.baseline);assert.equal(hash(b),signed.sha256);assert.equal(b.length,signed.size);if(!primed)primeCompression(b);const m=verifiedPatchHeader(b);assert.equal(m.version,old);assert.equal(m.runtimeSHA256,payload.fromRuntimeSHA256);fs.writeFileSync(p.join(out,'prior-'+spec.baseline+'.dvp'),b);bases.set(m.fromVersion,spec.baseline);};await loadBase(payload.priors[0]);await eachLimit(payload.priors.slice(1),loadBase);assert.equal(bases.size,57);
+
+ const changes=new Map(payload.changed.map(f=>{const b=Buffer.from(f.data,'base64');assert.equal(b.length,f.size);assert.equal(hash(b),f.sha256);return [f.path,f];}));const runtime=JSON.parse(Buffer.from(changes.get('runtime-files.json').data,'base64'));assert.equal(hash(Buffer.from(changes.get('runtime-files.json').data,'base64')),payload.runtimeSHA256);assert.equal(runtime.files.length,payload.runtimeFiles);assert(!payload.changed.some(f=>f.path.startsWith('content-packs/')));
+
+ const built=[];for(const spec of payload.patches){let m;if(spec.baseline===old)m={schema:1,fromVersion:old,version,fromRuntimeSHA256:payload.fromRuntimeSHA256,runtimeSHA256:payload.runtimeSHA256,files:payload.changed,remove:[]};else{assert(bases.has(spec.baseline));const before=JSON.parse(z.gunzipSync(fs.readFileSync(p.join(out,'prior-'+spec.baseline+'.dvp')).subarray(5)));const all=new Map(before.files.filter(f=>!f.path.startsWith('environment-effect-pack/')&&!f.path.startsWith('waterfall-pack/')).map(f=>[f.path,f]));for(const f of payload.changed)all.set(f.path,f);m={...before,version,runtimeSHA256:payload.runtimeSHA256,files:[...all.values()].sort((a,b)=>a.path.localeCompare(b.path,'en')),remove:before.remove.filter(f=>!changes.has(f))};}
+
+  const b=encodePatch(m);assert.equal(hash(b),spec.sha256,'Canonical signed package mismatch: '+spec.name);assert.equal(b.length,spec.size);fs.writeFileSync(p.join(out,spec.name),b);built.push(spec);if(spec.baseline!==old)fs.unlinkSync(p.join(out,'prior-'+spec.baseline+'.dvp'));
+
+ }
+
+ const languages=[];
+
+ for(const part of payload.extraAssets){const chunks=[];let received=0;for(const spec of payload.uploads.filter(x=>x.part===part.name).sort((a,b)=>a.offset-b.offset)){assert.equal(spec.offset,received);assert(/^[a-f0-9]{40}$/.test(spec.uploaded));const b=await bytes('https://api.github.com/repos/'+repo+'/git/blobs/'+spec.uploaded);assert.equal(b.length,spec.size);assert.equal(hash(b),spec.sha256);chunks.push(b);received+=b.length;}const data=Buffer.concat(chunks);assert.equal(data.length,part.size);assert.equal(hash(data),part.sha256);fs.writeFileSync(p.join(out,part.name),data);languages.push(part);console.log('Content part verified: '+part.name+' '+part.size+' bytes');}
+
+
+
+ const signature='Daemon_Viewer_Release_'+version+'.json',sums='SHA256SUMS-'+version+'.txt';fs.writeFileSync(p.join(out,signature),JSON.stringify(payload.envelope));const extras=[...languages,{name:signature,sha256:hash(fs.readFileSync(p.join(out,signature)))}];fs.writeFileSync(p.join(out,sums),[...built,...extras].map(f=>f.sha256+'  '+f.name).join('\n')+'\n');const expected=[...built,...extras,{name:sums,sha256:hash(fs.readFileSync(p.join(out,sums)))}];
+
+ console.log('58 independently signed canonical patch packages reproduced. Latest patch: '+built.at(-1).size+' bytes. Adaptive map performance, shared effect geometry and new winter objects. No installer or engine package.');if(process.env.DAEMON_LOCAL_PAYLOAD)return;
+
+ let existing;try{existing=JSON.parse(gh(['api','repos/'+repo+'/releases?per_page=100'])).find(r=>r.tag_name===tag);}catch{}
+
+ if(existing&&!existing.draft){assert.equal(existing.assets.length,expected.length);for(const f of expected){const a=existing.assets.find(a=>a.name===f.name);assert(a);assert.equal(a.digest,'sha256:'+f.sha256);if(f.baseline)assert.equal(a.label,'Datei-Patch ab '+f.baseline);}for(const f of built){const a=existing.assets.find(a=>a.name===f.name),label='Datei-Patch ab '+f.baseline;if(a.label!==label)gh(['api','--method','PATCH','repos/'+repo+'/releases/assets/'+a.id,'-f','label='+label]);}const verified=await json('https://api.github.com/repos/'+repo+'/releases/tags/'+tag);for(const f of built)assert.equal(verified.assets.find(a=>a.name===f.name).label,'Datei-Patch ab '+f.baseline);console.log('Immutable release bytes verified; updater compatibility labels verified.');return;}
+
+ const notes=p.join(out,'notes.md');fs.writeFileSync(notes,payload.notes);if(!existing)gh(['release','create',tag,'--repo',repo,'--draft','--title','Daemon M2 Tool '+version+' - Sechs Einzelpalmen und Karten-Performance','--notes-file',notes,'--target',process.env.GITHUB_SHA]);
+
+ await eachLimit(expected,f=>ghAsync(['release','upload',tag,p.join(out,f.name)+(f.baseline?'#Datei-Patch ab '+f.baseline:''),'--repo',repo,'--clobber']));const draft=JSON.parse(gh(['api','repos/'+repo+'/releases?per_page=100'])).find(r=>r.tag_name===tag);assert(draft.draft);assert.equal(draft.assets.length,expected.length);for(const f of expected){const a=draft.assets.find(a=>a.name===f.name);assert(a);assert.equal(a.digest,'sha256:'+f.sha256);if(f.baseline)assert.equal(a.label,'Datei-Patch ab '+f.baseline);}
+
+ gh(['api','--method','PATCH','repos/'+repo+'/releases/'+draft.id,'-F','draft=false','-f','make_latest=false']);
+
+ const live=await json('https://api.github.com/repos/'+repo+'/releases/tags/'+tag);assert(!live.draft);await eachLimit(expected,async f=>{const a=live.assets.find(a=>a.name===f.name);assert.equal(hash(await bytes(a.browser_download_url)),f.sha256);});const latest=await json('https://api.github.com/repos/'+repo+'/releases/latest');assert.equal(latest.tag_name,'v1.7.68','Legacy latest migration route changed');console.log('LIVE '+live.html_url+'; all 61 assets verified; legacy latest remains '+latest.tag_name);
+
+})().catch(e=>{console.error(e);process.exitCode=1});
+
+
+
+

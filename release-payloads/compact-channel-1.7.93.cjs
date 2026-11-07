@@ -13,11 +13,11 @@ async function request(path,method='GET',body){
 (async()=>{
  const snapshot=(await request('/releases?per_page=10')).value;
  const newest=snapshot.find(r=>!r.draft&&!r.prerelease);assert.equal(newest.tag_name,'v1.7.93');
- const backup=await request('/contents/release-payloads/channel-metadata-before-1.7.93.json?ref='+process.env.GITHUB_SHA);
- const saved=JSON.parse(Buffer.from(backup.value.content.replace(/\s/g,''),'base64'));
+ const backup=await request('/contents/release-payloads/channel-metadata-before-1.7.93.json.gz?ref='+process.env.GITHUB_SHA);
+ const saved=JSON.parse(require('zlib').gunzipSync(Buffer.from(backup.value.content.replace(/\s/g,''),'base64')));
  for(const release of snapshot.filter(r=>!r.draft&&r.id!==newest.id)){
   const old=saved.find(r=>r.id===release.id);assert(old&&old.body===release.body);
-  await request('/releases/'+release.id,'PATCH',{body:'Versionshinweise: https://github.com/'+repo+'/blob/main/release-payloads/channel-metadata-before-1.7.93.json',make_latest:'false'});
+  await request('/releases/'+release.id,'PATCH',{body:'Versionshinweise (Archiv): https://github.com/'+repo+'/raw/refs/heads/main/release-payloads/channel-metadata-before-1.7.93.json.gz',make_latest:'false'});
   await pause(800);
  }
  let response=await request('/releases?per_page=10');

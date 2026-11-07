@@ -1,4 +1,4 @@
-name: Repair legacy update metadata size for 1.7.93
+name: Repair legacy update metadata size for 1.7.93 (verified archive)
 on:
   push:
     branches: [main]

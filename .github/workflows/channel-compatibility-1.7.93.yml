@@ -1,0 +1,24 @@
+name: Repair legacy update metadata size for 1.7.93
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/channel-compatibility-1.7.93.yml']
+permissions:
+  contents: write
+concurrency:
+  group: daemon-channel-metadata
+  cancel-in-progress: false
+jobs:
+  compact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.22.1'
+      - name: Archive-preserving channel metadata maintenance
+        run: |
+          curl --fail --retry 3 -o "$RUNNER_TEMP/channel.cjs" "https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$GITHUB_SHA/release-payloads/compact-channel-1.7.93.cjs"
+          node "$RUNNER_TEMP/channel.cjs"

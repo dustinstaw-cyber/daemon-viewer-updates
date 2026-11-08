@@ -50,7 +50,7 @@ function verifyEnvelope(e,key){assert.equal(e.schema,1);assert.equal(e.algorithm
 // Current patches support every baseline; no native resource or signed byte is discarded.
 async function compactLegacyResourceRelease(publicKey){
  const api='https://api.github.com/repos/'+repo,originalTag='v1.7.97',archiveTag='archive-v1.7.97',stagingTag='resources-compat-v1.7.97';
- const all=[];for(let page=1;page<=100;page++){const batch=await json(api+'/releases?per_page=100&page='+page);all.push(...batch);if(batch.length<100)break;assert(page<100,'Release listing exceeds verified pagination bound');}let current=all.find(r=>r.tag_name===originalTag)||all.find(r=>r.tag_name===stagingTag),archive=all.find(r=>r.tag_name===archiveTag);
+ const all=[];for(let page=1;page<=100;page++){const batch=await json(api+'/releases?per_page=100&page='+page);all.push(...batch);if(batch.length<100)break;assert(page<100,'Release listing exceeds verified pagination bound');}let current=all.find(r=>r.tag_name===originalTag&&!r.draft)||all.find(r=>r.tag_name===stagingTag)||all.find(r=>r.tag_name===originalTag&&r.assets.length>0),archive=all.find(r=>r.tag_name===archiveTag);
  if(!archive&&current?.assets.some(a=>a.name.endsWith('.dvp')))archive=current;
  if(!archive){assert(current&&!current.draft&&current.assets.length===3);return;}
  const change=async(endpoint,method,body)=>{const response=await fetch(api+endpoint,{method,headers:{Authorization:'Bearer '+process.env.GH_TOKEN,Accept:'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify(body),signal:AbortSignal.timeout(30000)});assert(response.ok,method+' '+response.status+' '+endpoint);return response.json();};

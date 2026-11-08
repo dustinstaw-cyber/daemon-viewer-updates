@@ -1,4 +1,4 @@
-name: Build and verify Daemon M2 Tool 1.7.97 draft
+name: Build native and verified Daemon M2 Tool 1.7.97 draft
 on:
   push:
     branches: [main]

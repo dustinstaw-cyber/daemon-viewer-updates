@@ -24,3 +24,5 @@ jobs:
           node "$RUNNER_TEMP/finalize.cjs"
 
 # Draft releases are addressed by verified numeric release ID.
+
+# Wait for a full ten-item public page after archiving metadata.

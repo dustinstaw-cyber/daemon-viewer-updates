@@ -37,7 +37,7 @@ async function ensureLegacyChannelSize(){
  let channel=await publicList();
  for(const superseded of ['v1.7.86','v1.7.85','v1.7.84','v1.7.83','v1.7.82','v1.7.80']){
   if(channel.length<1045000)break;
-  const release=JSON.parse(gh(['api','repos/'+repo+'/releases/tags/'+superseded]));assert(release);
+  const release=JSON.parse(gh(['api','repos/'+repo+'/releases?per_page=100','--jq','.[] | select(.tag_name == '+JSON.stringify(superseded)+')']));assert(release);
   assert(release.assets.every(a=>a.name.endsWith('.dvp')||/^Daemon_Viewer_Release_.*\.json$/.test(a.name)||/^SHA256SUMS-.*\.txt$/.test(a.name)),'Never retire pinned native content or installer releases');
   // Retain every byte and its signed envelope in an owner-visible draft.
   // The new public release contains a verified patch for every old baseline.
@@ -76,13 +76,13 @@ async function ensureLegacyChannelSize(){
 
  console.log('63 independently signed canonical patch packages reproduced. Latest patch: '+built.at(-1).size+' bytes. Sixteen Christmas objects and ten skyboxes with persisted GPU snowfall. No installer or engine package.');if(process.env.DAEMON_LOCAL_PAYLOAD)return;
 
- let existing;try{existing=JSON.parse(gh(['api','repos/'+repo+'/releases/tags/'+tag]));}catch{}
+ let existing;try{existing=JSON.parse(gh(['api','repos/'+repo+'/releases?per_page=100','--jq','.[] | select(.tag_name == '+JSON.stringify(tag)+')']));}catch{}
 
  if(existing&&!existing.draft){assert.equal(existing.assets.length,expected.length);for(const f of expected){const a=existing.assets.find(a=>a.name===f.name);assert(a);assert.equal(a.digest,'sha256:'+f.sha256);if(f.baseline)assert.equal(a.label,'Datei-Patch ab '+f.baseline);}for(const f of built){const a=existing.assets.find(a=>a.name===f.name),label='Datei-Patch ab '+f.baseline;if(a.label!==label)gh(['api','--method','PATCH','repos/'+repo+'/releases/assets/'+a.id,'-f','label='+label]);}const verified=await json('https://api.github.com/repos/'+repo+'/releases/tags/'+tag);for(const f of built)assert.equal(verified.assets.find(a=>a.name===f.name).label,'Datei-Patch ab '+f.baseline);await ensureLegacyChannelSize();console.log('Immutable release bytes verified; updater compatibility labels verified.');return;}
 
  const notes=p.join(out,'notes.md');fs.writeFileSync(notes,payload.notes);if(!existing)gh(['release','create',tag,'--repo',repo,'--draft','--title','Daemon M2 Tool '+version+' - Weihnachtswelten und Schneefall','--notes-file',notes,'--target',process.env.GITHUB_SHA]);
 
- await eachLimit(expected,f=>ghAsync(['release','upload',tag,p.join(out,f.name)+(f.baseline?'#Datei-Patch ab '+f.baseline:''),'--repo',repo,'--clobber']));const draft=JSON.parse(gh(['api','repos/'+repo+'/releases/tags/'+tag]));assert(draft.draft);assert.equal(draft.assets.length,expected.length);for(const f of expected){const a=draft.assets.find(a=>a.name===f.name);assert(a);assert.equal(a.digest,'sha256:'+f.sha256);if(f.baseline)assert.equal(a.label,'Datei-Patch ab '+f.baseline);}
+ await eachLimit(expected,f=>ghAsync(['release','upload',tag,p.join(out,f.name)+(f.baseline?'#Datei-Patch ab '+f.baseline:''),'--repo',repo,'--clobber']));const draft=JSON.parse(gh(['api','repos/'+repo+'/releases?per_page=100','--jq','.[] | select(.tag_name == '+JSON.stringify(tag)+')']));assert(draft.draft);assert.equal(draft.assets.length,expected.length);for(const f of expected){const a=draft.assets.find(a=>a.name===f.name);assert(a);assert.equal(a.digest,'sha256:'+f.sha256);if(f.baseline)assert.equal(a.label,'Datei-Patch ab '+f.baseline);}
 
  gh(['api','--method','PATCH','repos/'+repo+'/releases/'+draft.id,'-F','draft=false','-f','make_latest=false']);
 

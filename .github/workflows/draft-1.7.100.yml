@@ -26,3 +26,5 @@ jobs:
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$env:GITHUB_REPOSITORY/$env:GITHUB_SHA/release-payloads/draft-1.7.100.cjs" -OutFile $publisher -MaximumRetryCount 3
           node $publisher
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+# Use independently verified texture content pack for legacy updater size limits.

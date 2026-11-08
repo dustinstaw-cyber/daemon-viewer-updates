@@ -2,7 +2,7 @@ const assert=require('assert/strict'),c=require('crypto'),z=require('zlib');
 const repo='dustinstaw-cyber/daemon-viewer-updates',version='1.7.96',api='https://api.github.com/repos/'+repo,sha=b=>c.createHash('sha256').update(b).digest('hex');
 async function bytes(url,auth=false){for(let n=0;n<5;n++){const r=await fetch(url,{headers:{Accept:'application/vnd.github+json','User-Agent':'Daemon-Release-Finalizer',...(auth?{Authorization:'Bearer '+process.env.GH_TOKEN}:{})},signal:AbortSignal.timeout(120000)});if(r.ok)return Buffer.from(await r.arrayBuffer());if(n===4)throw Error('HTTP '+r.status+' '+url);await new Promise(r=>setTimeout(r,2000*(n+1)));}}
 const json=async(url,auth=false)=>JSON.parse(await bytes(url,auth));
-async function stableChannel(){for(let n=0;n<20;n++){const b=await bytes(api+'/releases?per_page=10&daemon_verify='+Date.now());if(JSON.parse(b).length===10)return b;await new Promise(r=>setTimeout(r,3000));}throw Error('Public release pagination has not stabilized.');}
+async function stableChannel(){for(let n=0;n<20;n++){const b=await bytes(api+'/releases?per_page=10&daemon_verify='+Date.now());const releases=JSON.parse(b);if(releases.length===10&&releases.some(r=>r.tag_name==='v'+version&&!r.draft))return b;await new Promise(r=>setTimeout(r,3000));}throw Error('Public release pagination has not stabilized.');}
 
 async function patch(path,body){const r=await fetch(api+path,{method:'PATCH',headers:{Authorization:'Bearer '+process.env.GH_TOKEN,Accept:'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify(body)});assert(r.ok,'PATCH '+r.status+' '+path);return r.json();}
 (async()=>{

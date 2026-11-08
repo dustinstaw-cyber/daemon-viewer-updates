@@ -65,7 +65,7 @@ async function compactLegacyResourceRelease(publicKey){
 }
 
 async function ensureLegacyChannelSize(){
- const publicList=async()=>{for(let attempt=0;attempt<20;attempt++){const r=await fetch('https://api.github.com/repos/'+repo+'/releases?per_page=10&daemon_verify='+Date.now(),{headers:{Accept:'application/vnd.github+json','User-Agent':'Daemon-Legacy-Channel-Check'},signal:AbortSignal.timeout(20000)});assert(r.ok);const text=await r.text(),releases=JSON.parse(text);if(releases.length===10)return{length:Buffer.byteLength(text),releases};await new Promise(r=>setTimeout(r,3000));}throw Error('Public pagination has not stabilized.');};
+ const publicList=async()=>{for(let attempt=0;attempt<20;attempt++){const r=await fetch('https://api.github.com/repos/'+repo+'/releases?per_page=10&daemon_verify='+Date.now(),{headers:{Accept:'application/vnd.github+json','User-Agent':'Daemon-Legacy-Channel-Check'},signal:AbortSignal.timeout(20000)});assert(r.ok);const text=await r.text(),releases=JSON.parse(text);if(releases.length===10&&releases.some(r=>r.tag_name===tag&&!r.draft))return{length:Buffer.byteLength(text),releases};await new Promise(r=>setTimeout(r,3000));}throw Error('Public pagination has not stabilized.');};
  let channel=await publicList();
  for(const superseded of ['v1.7.86','v1.7.85','v1.7.84','v1.7.83','v1.7.82','v1.7.80']){
   if(channel.length<1045000)break;

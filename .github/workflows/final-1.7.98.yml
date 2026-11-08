@@ -33,3 +33,5 @@ jobs:
           Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$env:GITHUB_REPOSITORY/$env:GITHUB_SHA/release-payloads/live-1.7.98.cjs" -OutFile $check -MaximumRetryCount 3
           node $check
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+# Retry with complete paginated owner release inventory.

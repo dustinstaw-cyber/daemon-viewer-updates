@@ -1,4 +1,4 @@
-name: Build verified Map Studio Daemon M2 Tool 1.7.98 draft
+name: Build final Map Studio Daemon M2 Tool 1.7.98 draft
 on:
   push:
     branches: [main]

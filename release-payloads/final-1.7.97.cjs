@@ -74,6 +74,7 @@ if(checked.draft)gh(['api','--method','PATCH','repos/'+repo+'/releases/'+checked
 const live=await json('https://api.github.com/repos/'+repo+'/releases/tags/'+tag+'?verify='+Date.now());assert(!live.draft);assert.equal(live.assets.length,68);assert.equal((await json('https://api.github.com/repos/'+repo+'/releases/latest')).tag_name,'v1.7.68');
 // Authenticated API metadata is used for publication verification; the next workflow step
 // separately checks the unmodified updater over anonymous public download URLs.
-const channel=gh(['api','repos/'+repo+'/releases?per_page=10','--jq','[.[] | select(.draft == false)]']);assert(JSON.parse(channel).some(x=>x.tag_name===tag));
+// The authenticated owner listing includes archive drafts and differs from the public updater channel.
+// Verify public channel discovery in the separate anonymous updater step.
 console.log('PUBLISHED '+live.html_url+'; signed patch and content release complete.');
 })().catch(e=>{console.error(e);process.exitCode=1});

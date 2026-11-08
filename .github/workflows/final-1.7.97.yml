@@ -1,4 +1,4 @@
-name: Publish offline-signed Daemon M2 Tool 1.7.97
+name: Publish and verify offline-signed Daemon M2 Tool 1.7.97
 on:
   push:
     branches: [main]

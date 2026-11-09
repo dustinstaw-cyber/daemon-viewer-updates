@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
       GH_TOKEN: ${{ github.token }}
@@ -33,5 +33,5 @@ jobs:
 
 # Pin pyramids to buildings category and dedicated subgroup.
 
+# Use platform-independent Node patch builder after Windows runner infrastructure errors.
 
-# Retry after GitHub infrastructure startup failure.

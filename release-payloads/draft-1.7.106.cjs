@@ -1,6 +1,7 @@
 const fs=require('fs'),p=require('path'),z=require('zlib'),crypto=require('crypto'),assert=require('assert/strict'),{execFileSync}=require('child_process');
 
 
+const originalGzipSync=z.gzipSync;z.gzipSync=(...args)=>{const bytes=originalGzipSync(...args);bytes[9]=10;return bytes;}; // Canonical Windows DVP gzip header matches the independently signed exact patch.
 const gzipMembers=new Map();let primed=false;
 function primeCompression(input){let at=5;assert.equal(input.subarray(0,5).toString(),'DVP1\n');while(at<input.length){assert.equal(input.readUInt32LE(at),0x00088b1f);const raw=z.inflateRawSync(input.subarray(at+10),{info:true,maxOutputLength:512*1024**2}),length=10+raw.engine.bytesWritten+8,member=input.subarray(at,at+length);assert(z.gunzipSync(member).equals(raw.buffer));gzipMembers.set(crypto.createHash('sha256').update(raw.buffer).digest('hex'),member);at+=length;}assert.equal(at,input.length);primed=true;}
 function verifiedPatchHeader(input){assert.equal(input.subarray(0,5).toString(),'DVP1\n');const header=z.inflateRawSync(input.subarray(15),{maxOutputLength:1024*1024}).toString('utf8');assert(header.endsWith(',"files":['));return JSON.parse(header.slice(0,-10)+'}');}
@@ -55,7 +56,7 @@ const runtime=JSON.parse(Buffer.from(changes.get('runtime-files.json').data,'bas
 const prior=await json('https://api.github.com/repos/'+repo+'/releases/tags/v'+old);assert(!prior.draft);const priorEnvelope=JSON.parse(await downloadPrior(prior.assets.find(a=>a.name==='Daemon_Viewer_Release_'+old+'.json'),out,{cache:false})),priorClaims=verifyEnvelope(priorEnvelope,key);assert.equal(priorClaims.version,old);assert.equal(priorClaims.patches.length,73);
 const api='https://api.github.com/repos/'+repo;
 const all=await json(api+'/releases?per_page=100&verify='+Date.now());console.log('Recent release metadata '+JSON.stringify(all.slice(0,6).map(r=>({id:r.id,tag:r.tag_name,name:r.name,draft:r.draft}))));
-const buildMarker='<!-- verified-input:'+hash(input)+' -->';
+const buildMarker='<!-- verified-input:'+hash(input)+'; gzip-os:10 -->';
 let draft=all.filter(r=>r.tag_name===tag&&r.body?.includes(buildMarker)).sort((a,b)=>b.assets.length-a.assets.length)[0];
 for(const obsolete of all.filter(r=>r.tag_name===tag&&r.draft&&!r.body?.includes(buildMarker))){const response=await fetch(api+'/releases/'+obsolete.id,{method:'PATCH',headers:{Authorization:'Bearer '+process.env.GH_TOKEN,Accept:'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify({tag_name:'superseded-draft-'+tag+'-'+obsolete.id,make_latest:'false'})});assert(response.ok,'Preserve superseded draft '+response.status);}
 if(draft)assert(draft.draft,'Already public; never mutate release bytes');else{const response=await fetch(api+'/releases',{method:'POST',headers:{Authorization:'Bearer '+process.env.GH_TOKEN,Accept:'application/vnd.github+json','Content-Type':'application/json'},body:JSON.stringify({tag_name:tag,target_commitish:process.env.GITHUB_SHA,name:'Daemon M2 Tool '+version+' - Output-Ordner zuverlässig öffnen',body:payload.notes+'\n\n'+buildMarker,draft:true,prerelease:false,make_latest:'false'})});assert(response.ok,'Create draft '+response.status);draft=await response.json();}

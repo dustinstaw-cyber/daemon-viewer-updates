@@ -1,0 +1,40 @@
+name: Publish and verify offline-signed Daemon M2 Tool 1.7.105
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/final-1.7.105.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: daemon-viewer-release-1.7.105
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.22.1'
+      - name: Verify offline signature and publish exact draft bytes
+        shell: pwsh
+        run: |
+          $publisher = Join-Path $env:RUNNER_TEMP 'final-1.7.105.cjs'
+          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$env:GITHUB_REPOSITORY/$env:GITHUB_SHA/release-payloads/final-1.7.105.cjs" -OutFile $publisher -MaximumRetryCount 3
+          node $publisher
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Verify actual anonymous updater and public native download
+        shell: pwsh
+        run: |
+          $check = Join-Path $env:RUNNER_TEMP 'live-1.7.105.cjs'
+          Invoke-WebRequest -Uri "https://raw.githubusercontent.com/$env:GITHUB_REPOSITORY/$env:GITHUB_SHA/release-payloads/live-1.7.105.cjs" -OutFile $check -MaximumRetryCount 3
+          node $check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+# Retry with complete paginated owner release inventory.
+
+# Prefer public release over an empty same-tag draft.
+

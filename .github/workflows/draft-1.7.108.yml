@@ -35,3 +35,4 @@ jobs:
 
 # Use platform-independent Node patch builder after Windows runner infrastructure errors.
 # Diagnose legacy expansion budget before publication.
+# Omit optional generated content indexes from legacy transition packages.

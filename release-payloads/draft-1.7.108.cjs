@@ -14,7 +14,7 @@ function patchEncoder(){
    const file=manifest.files[i],prefix=i?',':'',serialized=prefix+JSON.stringify(file),key=crypto.createHash('sha256').update(serialized).digest('hex');expanded+=Buffer.byteLength(serialized);
    if(!cache.has(key))cache.set(key,z.gzipSync(Buffer.from(serialized),{level:6}));parts.push(cache.get(key));
   }
-  if(expanded>512*1024**2)throw Error('Patch exceeds the installed updater expansion limit.');
+  if(expanded>512*1024**2)throw Error('Patch expansion '+expanded+' baseline '+manifest.fromVersion+' exceeds limit; largest '+JSON.stringify(manifest.files.map(f=>({path:f.path,size:f.size})).sort((a,b)=>b.size-a.size).slice(0,20)));
   parts.push(end);return Buffer.concat(parts);
  };
 }

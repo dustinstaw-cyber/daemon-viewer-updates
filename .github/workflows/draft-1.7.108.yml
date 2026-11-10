@@ -34,3 +34,4 @@ jobs:
 # Pin pyramids to buildings category and dedicated subgroup.
 
 # Use platform-independent Node patch builder after Windows runner infrastructure errors.
+# Diagnose legacy expansion budget before publication.

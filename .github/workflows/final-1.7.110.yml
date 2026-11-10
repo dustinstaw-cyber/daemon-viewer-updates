@@ -37,3 +37,4 @@ jobs:
 # Retry with complete paginated owner release inventory.
 
 # Prefer public release over an empty same-tag draft.
+# Preserve explicit version tag when publishing a resumed GitHub draft.
